@@ -1,5 +1,6 @@
 ﻿using Microsoft.Office.Interop.Access.Dao;
 using System;
+using System.Collections.Generic;
 
 namespace BudgetDjinni.Database.Schemas
 {
@@ -138,6 +139,15 @@ namespace BudgetDjinni.Database.Schemas
 
         public bool Equals(Income other) => (Id == other.Id) && (Name == other.Name) && (Value == other.Value);
         public override bool Equals(object obj) => Equals(obj as Income);
+
+        public override int GetHashCode()
+        {
+            int hashCode = -679859104;
+            hashCode = hashCode * -1521134295 + Id.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            hashCode = hashCode * -1521134295 + Value.GetHashCode();
+            return hashCode;
+        }
         #endregion Public API
     }
 }
