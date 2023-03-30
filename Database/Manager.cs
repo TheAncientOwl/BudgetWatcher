@@ -10,7 +10,7 @@ namespace BudgetDjinni.Database
     {
         #region Fields
         public static readonly string DatabaseFilePath = Path.Combine(AppContext.BaseDirectory, "BudgetDjinni.accdb");
-        static Manager s_Instance = new Manager();
+        static readonly Manager s_Instance = new Manager();
 
         Access.Application m_AccessApp = null;
         #endregion Fields
