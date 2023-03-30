@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace BudgetDjinni
 {
@@ -10,6 +7,21 @@ namespace BudgetDjinni
     {
         static void Main(string[] args)
         {
+            if (File.Exists(Database.Manager.DatabaseFilePath))
+            {
+                File.Delete(Database.Manager.DatabaseFilePath);
+            }
+
+            Console.WriteLine("> Opening database...");
+            Database.Manager.Instance.OpenOrCreateDatabase();
+            Console.WriteLine("Database opened!\n");
+
+            Console.WriteLine("> Closing database...");
+            Database.Manager.Instance.CloseDatabase();
+            Console.WriteLine("> Database closed!\n");
+
+            Console.WriteLine("> Press any key to continue...");
+            Console.ReadLine();
         }
     }
 }
