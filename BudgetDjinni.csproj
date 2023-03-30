@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Manager.cs" />
+    <Compile Include="Database\Schemas\ExpenseCategory.cs" />
     <Compile Include="Database\Schemas\Income.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

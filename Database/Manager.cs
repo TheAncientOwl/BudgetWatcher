@@ -53,6 +53,7 @@ namespace BudgetDjinni.Database
 
             // create tables
             Schemas.Income.CreateTable();
+            Schemas.ExpenseCategory.CreateTable();
         }
         #endregion Private API
     }

@@ -14,13 +14,13 @@ namespace BudgetDjinni
 
             Console.WriteLine("> Opening database...");
             Database.Manager.Instance.OpenOrCreateDatabase();
-            Console.WriteLine("Database opened!\n");
+            Console.WriteLine("> Database opened!\n");
 
             Console.WriteLine("> Closing database...");
             Database.Manager.Instance.CloseDatabase();
             Console.WriteLine("> Database closed!\n");
 
-            Console.WriteLine("> Press any key to continue...");
+            Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
         }
     }
