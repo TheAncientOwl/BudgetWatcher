@@ -3,7 +3,7 @@ using System;
 
 namespace BudgetDjinni.Database.Schemas
 {
-    public class ExpenseCategory : IDatabaseObject, IFormattable
+    public class ExpenseCategory : IDatabaseObject
     {
         #region Database Table Definitions
         public static readonly string TableName = "ExpenseCategories";
@@ -133,11 +133,6 @@ namespace BudgetDjinni.Database.Schemas
             rs.Delete();
 
             rs.Close();
-        }
-
-        public string ToString(string format, IFormatProvider formatProvider)
-        {
-            return string.Format("ID({0}) Name({1})", Id, Name);
         }
         #endregion Public API
     }

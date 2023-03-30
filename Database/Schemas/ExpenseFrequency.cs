@@ -3,7 +3,7 @@ using System;
 
 namespace BudgetDjinni.Database.Schemas
 {
-    public class ExpenseFrequency : IDatabaseObject, IFormattable
+    public class ExpenseFrequency : IDatabaseObject
     {
         #region Database Table Definitions
         public static readonly string TableName = "ExpenseFrequencies";
@@ -133,11 +133,6 @@ namespace BudgetDjinni.Database.Schemas
             rs.Delete();
 
             rs.Close();
-        }
-
-        public string ToString(string format, IFormatProvider formatProvider)
-        {
-            return string.Format("ID({0}) Name({1}) Days({2})", Id, Name, Days);
         }
         #endregion Public API
     }
