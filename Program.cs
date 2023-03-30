@@ -23,7 +23,24 @@ namespace BudgetDjinni
             Console.WriteLine(income1);
 
             Income income2 = new Income(income1.Id);
+            income2.Name = "Chirii";
+            income2.Value = 5000;
+            income2.Update();
             Console.WriteLine(income2);
+
+            Income income3 = new Income(income1.Id);
+            Console.WriteLine(income3);
+            income3.Delete();
+
+            try
+            {
+                Income income4 = new Income(income1.Id);
+                Console.WriteLine(income4);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
 
             Console.WriteLine("> Closing database...");
             Database.Manager.Instance.CloseDatabase();

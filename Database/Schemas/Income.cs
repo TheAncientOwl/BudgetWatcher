@@ -55,6 +55,7 @@ namespace BudgetDjinni.Database.Schemas
         #region Constructors
         public Income(string name, double value)
         {
+            Id = -1;
             Name = name;
             Value = value;
         }
@@ -102,12 +103,37 @@ namespace BudgetDjinni.Database.Schemas
 
         public void Update()
         {
-            throw new System.NotImplementedException();
+            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
+            rs.FindFirst(Fields.ID + " = " + Id);
+
+            if (rs.NoMatch)
+            {
+                rs.Close();
+                throw new Exception("No Address with ID " + Id + " matched");
+            }
+
+            rs.Edit();
+            rs.Fields[Fields.Name].Value = Name;
+            rs.Fields[Fields.Value].Value = Value;
+
+            rs.Update();
+            rs.Close();
         }
 
         public void Delete()
         {
-            throw new System.NotImplementedException();
+            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
+            rs.FindFirst(Fields.ID + " = " + Id);
+
+            if (rs.NoMatch)
+            {
+                rs.Close();
+                throw new Exception("No Address with ID " + Id + " matched");
+            }
+
+            rs.Delete();
+
+            rs.Close();
         }
 
         public string ToString(string format, IFormatProvider formatProvider)
