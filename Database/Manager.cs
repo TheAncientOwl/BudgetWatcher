@@ -30,6 +30,15 @@ namespace BudgetDjinni.Database
 
             return rs;
         }
+
+        public static Access.Dao.Recordset NewRecord(string tableName)
+        {
+            Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
+
+            rs.AddNew();
+
+            return rs;
+        }
         #endregion Properties
 
         #region Public API

@@ -136,9 +136,8 @@ namespace BudgetDjinni.Database.Schemas
 
         public void Save()
         {
-            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
+            Recordset rs = Manager.NewRecord(TableName);
 
-            rs.AddNew();
             Id = (int)rs.Fields[Fields.ID].Value;
 
             rs.Fields[Fields.Name].Value = Name;
