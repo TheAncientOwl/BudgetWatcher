@@ -77,7 +77,7 @@ namespace BudgetDjinni.Database.Schemas
             if (rs.NoMatch)
             {
                 rs.Close();
-                throw new Exception("No Address with ID " + id + " matched");
+                throw new Exception("No Income with ID " + id + " matched");
             }
 
             Id = (int)rs.Fields[Fields.ID].Value;
@@ -109,7 +109,7 @@ namespace BudgetDjinni.Database.Schemas
             if (rs.NoMatch)
             {
                 rs.Close();
-                throw new Exception("No Address with ID " + Id + " matched");
+                throw new Exception("No Income with ID " + Id + " matched");
             }
 
             rs.Edit();
@@ -128,7 +128,7 @@ namespace BudgetDjinni.Database.Schemas
             if (rs.NoMatch)
             {
                 rs.Close();
-                throw new Exception("No Address with ID " + Id + " matched");
+                throw new Exception("No Income with ID " + Id + " matched");
             }
 
             rs.Delete();
