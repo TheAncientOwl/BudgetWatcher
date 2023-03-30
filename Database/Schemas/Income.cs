@@ -1,8 +1,9 @@
 ﻿using Microsoft.Office.Interop.Access.Dao;
+using System;
 
 namespace BudgetDjinni.Database.Schemas
 {
-    public class Income
+    public class Income : IDatabaseObject, IFormattable
     {
         #region Database Table Definitions
         public static readonly string TableName = "Incomes";
@@ -42,6 +43,77 @@ namespace BudgetDjinni.Database.Schemas
             // add table definition
             Manager.DbInstance.TableDefs.Append(tableDef);
         }
+
         #endregion Database Table Definitions
+
+        #region Properites
+        public int Id { get; private set; }
+        public string Name { get; set; }
+        public double Value { get; set; }
+        #endregion Properites
+
+        #region Constructors
+        public Income(string name, double value)
+        {
+            Name = name;
+            Value = value;
+        }
+
+        public Income() : this("Empty Income", 0) { }
+
+        public Income(int id)
+        {
+            LoadFromId(id);
+        }
+        #endregion Constructors
+
+        #region Public API
+        public void LoadFromId(int id)
+        {
+            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
+            rs.FindFirst(Fields.ID + " = " + id);
+
+            if (rs.NoMatch)
+            {
+                rs.Close();
+                throw new Exception("No Address with ID " + id + " matched");
+            }
+
+            Id = (int)rs.Fields[Fields.ID].Value;
+            Name = (string)rs.Fields[Fields.Name].Value;
+            Value = (double)rs.Fields[Fields.Value].Value;
+
+            rs.Close();
+        }
+
+        public void Save()
+        {
+            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
+
+            rs.AddNew();
+            Id = (int)rs.Fields[Fields.ID].Value;
+
+            rs.Fields[Fields.Name].Value = Name;
+            rs.Fields[Fields.Value].Value = Value;
+
+            rs.Update();
+            rs.Close();
+        }
+
+        public void Update()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return string.Format("ID({0}) | Name({1}) | Value({2})", Id, Name, Value);
+        }
+        #endregion Public API
     }
 }
