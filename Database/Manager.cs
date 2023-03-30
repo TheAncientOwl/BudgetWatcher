@@ -1,10 +1,10 @@
-﻿using BudgetDjinni.Database.Schemas;
+﻿using BudgetWatcher.Database.Schemas;
 using Microsoft.Office.Interop.Access.Dao;
 using System;
 using System.IO;
 using Access = Microsoft.Office.Interop.Access;
 
-namespace BudgetDjinni.Database
+namespace BudgetWatcher.Database
 {
     public class Manager
     {

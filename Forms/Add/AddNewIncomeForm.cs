@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace BudgetDjinni.Forms.Add
+namespace BudgetWatcher.Forms.Add
 {
     public partial class AddNewIncomeForm : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace BudgetDjinni.Database.Schemas
+﻿namespace BudgetWatcher.Database.Schemas
 {
     public interface IDatabaseObject
     {

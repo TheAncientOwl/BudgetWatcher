@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7546C7A3-6744-444C-BFA5-0F3B7CCEC762}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BudgetDjinni</RootNamespace>
-    <AssemblyName>BudgetDjinni</AssemblyName>
+    <RootNamespace>BudgetWatcher</RootNamespace>
+    <AssemblyName>BudgetWatcher</AssemblyName>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

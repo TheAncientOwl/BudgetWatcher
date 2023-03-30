@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BudgetDjinni.Forms.Feedback
+namespace BudgetWatcher.Forms.Feedback
 {
     public partial class InfoForm : Form
     {

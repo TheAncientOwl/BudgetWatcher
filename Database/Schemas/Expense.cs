@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BudgetDjinni.Database.Schemas
+namespace BudgetWatcher.Database.Schemas
 {
     public class Expense : IDatabaseObject, IEquatable<Expense>
     {

@@ -1,4 +1,4 @@
-﻿namespace BudgetDjinni.Forms.Feedback
+﻿namespace BudgetWatcher.Forms.Feedback
 {
     partial class InfoForm
     {

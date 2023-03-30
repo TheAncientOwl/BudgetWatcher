@@ -1,4 +1,4 @@
-﻿namespace BudgetDjinni.Forms.Add
+﻿namespace BudgetWatcher.Forms.Add
 {
     partial class AddNewIncomeForm
     {

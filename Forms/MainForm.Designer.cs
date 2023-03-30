@@ -1,4 +1,4 @@
-﻿namespace BudgetDjinni.Forms
+﻿namespace BudgetWatcher.Forms
 {
     partial class MainForm
     {

@@ -1,10 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
-using BudgetDjinni.Database.Schemas;
-using BudgetDjinni.Forms;
+using BudgetWatcher.Forms;
 
-namespace BudgetDjinni
+namespace BudgetWatcher
 {
     public class Program
     {
