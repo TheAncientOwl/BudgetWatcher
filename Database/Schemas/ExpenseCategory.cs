@@ -1,8 +1,9 @@
 ﻿using Microsoft.Office.Interop.Access.Dao;
+using System;
 
 namespace BudgetDjinni.Database.Schemas
 {
-    public class ExpenseCategory
+    public class ExpenseCategory : IDatabaseObject, IFormattable
     {
         #region Database Table Definitions
         public static readonly string TableName = "ExpenseCategories";
@@ -43,5 +44,101 @@ namespace BudgetDjinni.Database.Schemas
             Manager.DbInstance.TableDefs.Append(tableDef);
         }
         #endregion Database Table Definitions
+
+        #region Properties
+        public int Id { get; private set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        #endregion Properties
+
+        #region Constructors
+        public ExpenseCategory(string name, string description)
+        {
+            Id = -1;
+            Name = name;
+            Description = description;
+        }
+
+        public ExpenseCategory() : this("Empty Category", "-") { }
+
+        public ExpenseCategory(int id)
+        {
+            LoadFromId(id);
+        }
+        #endregion Constructors
+
+        #region Public API
+        public void LoadFromId(int id)
+        {
+            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
+            rs.FindFirst(Fields.ID + " = " + id);
+
+            if (rs.NoMatch)
+            {
+                rs.Close();
+                throw new Exception("No Category with ID " + id + " matched");
+            }
+
+            Id = (int)rs.Fields[Fields.ID].Value;
+            Name = (string)rs.Fields[Fields.Name].Value;
+            Description = (string)rs.Fields[Fields.Description].Value;
+
+            rs.Close();
+        }
+
+        public void Save()
+        {
+            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
+
+            rs.AddNew();
+            Id = (int)rs.Fields[Fields.ID].Value;
+
+            rs.Fields[Fields.Name].Value = Name;
+            rs.Fields[Fields.Description].Value = Description;
+
+            rs.Update();
+            rs.Close();
+        }
+
+        public void Update()
+        {
+            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
+            rs.FindFirst(Fields.ID + " = " + Id);
+
+            if (rs.NoMatch)
+            {
+                rs.Close();
+                throw new Exception("No Category with ID " + Id + " matched");
+            }
+
+            rs.Edit();
+            rs.Fields[Fields.Name].Value = Name;
+            rs.Fields[Fields.Description].Value = Description;
+
+            rs.Update();
+            rs.Close();
+        }
+
+        public void Delete()
+        {
+            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
+            rs.FindFirst(Fields.ID + " = " + Id);
+
+            if (rs.NoMatch)
+            {
+                rs.Close();
+                throw new Exception("No Category with ID " + Id + " matched");
+            }
+
+            rs.Delete();
+
+            rs.Close();
+        }
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return string.Format("ID({0}) Name({1})", Id, Name);
+        }
+        #endregion Public API
     }
 }
