@@ -38,6 +38,10 @@ namespace BudgetDjinni.Database
         public void CloseDatabase()
         {
             if (m_AccessApp == null) return;
+
+            m_AccessApp.CloseCurrentDatabase();
+            m_AccessApp.Quit();
+            m_AccessApp = null;
         }
         #endregion Public API
 
