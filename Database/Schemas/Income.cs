@@ -3,7 +3,7 @@ using System;
 
 namespace BudgetDjinni.Database.Schemas
 {
-    public class Income : IDatabaseObject
+    public class Income : IDatabaseObject, IEquatable<Income>
     {
         #region Database Table Definitions
         public static readonly string TableName = "Incomes";
@@ -135,6 +135,9 @@ namespace BudgetDjinni.Database.Schemas
 
             rs.Close();
         }
+
+        public bool Equals(Income other) => (Id == other.Id) && (Name == other.Name) && (Value == other.Value);
+        public override bool Equals(object obj) => Equals(obj as Income);
         #endregion Public API
     }
 }

@@ -3,7 +3,7 @@ using System;
 
 namespace BudgetDjinni.Database.Schemas
 {
-    public class ExpenseCategory : IDatabaseObject
+    public class ExpenseCategory : IDatabaseObject, IEquatable<ExpenseCategory>
     {
         #region Database Table Definitions
         public static readonly string TableName = "ExpenseCategories";
@@ -134,6 +134,10 @@ namespace BudgetDjinni.Database.Schemas
 
             rs.Close();
         }
+
+        public bool Equals(ExpenseCategory other) => (Id == other.Id) && (Name == other.Name) && (Description == other.Description);
+        public override bool Equals(object obj) => Equals(obj as ExpenseCategory);
+
         #endregion Public API
     }
 }

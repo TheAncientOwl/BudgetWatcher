@@ -3,7 +3,7 @@ using System;
 
 namespace BudgetDjinni.Database.Schemas
 {
-    public class ExpenseFrequency : IDatabaseObject
+    public class ExpenseFrequency : IDatabaseObject, IEquatable<ExpenseFrequency>
     {
         #region Database Table Definitions
         public static readonly string TableName = "ExpenseFrequencies";
@@ -134,6 +134,10 @@ namespace BudgetDjinni.Database.Schemas
 
             rs.Close();
         }
+
+        public bool Equals(ExpenseFrequency other) => (Id == other.Id) && (Name == other.Name) && (Days == other.Days);
+        public override bool Equals(object obj) => Equals(obj as ExpenseFrequency);
+
         #endregion Public API
     }
 }
