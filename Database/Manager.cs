@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Interop.Access.Dao;
+﻿using BudgetDjinni.Database.Schemas;
+using Microsoft.Office.Interop.Access.Dao;
 using System;
 using System.IO;
 using Access = Microsoft.Office.Interop.Access;
@@ -83,6 +84,39 @@ namespace BudgetDjinni.Database
             Schemas.ExpenseCategory.CreateTable();
             Schemas.ExpenseFrequency.CreateTable();
             Schemas.Expense.CreateTable();
+
+
+            // insert default data
+            ExpenseCategory category = new ExpenseCategory();
+            foreach (var value in new Tuple<string, string>[] {
+                new Tuple<string, string>("Produse Alimentare", "pâine, lapte, ouă, ..."),
+                new Tuple<string, string>("Sănătate", "analize medicale, medicamente, ..."),
+                new Tuple<string, string>("Divertisment", "filme, masa la restaurant, ..."),
+                new Tuple<string, string>("Servicii", "spălătorie, croitorie, ..."),
+                new Tuple<string, string>("Pentru casă", "detergenți, mobilă, frigider, ..."),
+                new Tuple<string, string>("Pentru mașină", "benzină, motorină, spălătorie, ..."),
+                new Tuple<string, string>("Altele", "altele ..."),
+                new Tuple<string, string>("Chirie", "..."),
+                new Tuple<string, string>("Întreținere", "facturi la curent, gaze, ..."),
+                new Tuple<string, string>("Abonamente", "netflix, internet, telefonie, ..."),
+            })
+            {
+                category.Name = value.Item1;
+                category.Description = value.Item2;
+                category.Insert();
+            }
+
+            ExpenseFrequency frequency = new ExpenseFrequency();
+            foreach (var value in new Tuple<string, int>[] {
+                new Tuple<string, int>("Anual", 365),
+                new Tuple<string, int>("Lunar", 30),
+                new Tuple<string, int>("Zilnic", 1)
+            })
+            {
+                frequency.Name = value.Item1;
+                frequency.Days = value.Item2;
+                frequency.Insert();
+            }
         }
         #endregion Private API
     }
