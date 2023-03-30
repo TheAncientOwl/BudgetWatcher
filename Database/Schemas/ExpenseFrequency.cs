@@ -80,7 +80,7 @@ namespace BudgetDjinni.Database.Schemas
             rs.Close();
         }
 
-        public void Save()
+        public void Insert()
         {
             Recordset rs = Manager.NewRecord(TableName);
 
