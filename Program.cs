@@ -2,6 +2,7 @@
 using System.IO;
 
 using BudgetDjinni.Database.Schemas;
+using BudgetDjinni.Forms;
 
 namespace BudgetDjinni
 {
@@ -17,6 +18,9 @@ namespace BudgetDjinni
             Console.WriteLine("> Opening database...");
             Database.Manager.Instance.OpenOrCreateDatabase();
             Console.WriteLine("> Database opened!\n");
+
+            MainForm mainForm = new MainForm();
+            mainForm.ShowDialog();
 
             Console.WriteLine("> Closing database...");
             Database.Manager.Instance.CloseDatabase();

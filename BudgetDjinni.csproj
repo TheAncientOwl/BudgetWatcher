@@ -67,6 +67,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -81,11 +83,40 @@
     <Compile Include="Database\Schemas\ExpenseCategory.cs" />
     <Compile Include="Database\Schemas\ExpenseFrequency.cs" />
     <Compile Include="Database\Schemas\Income.cs" />
+    <Compile Include="Forms\Add\AddNewIncomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add\AddNewIncomeForm.Designer.cs">
+      <DependentUpon>AddNewIncomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Feedback\InfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Feedback\InfoForm.Designer.cs">
+      <DependentUpon>InfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\Add\AddNewIncomeForm.resx">
+      <DependentUpon>AddNewIncomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Feedback\InfoForm.resx">
+      <DependentUpon>InfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
