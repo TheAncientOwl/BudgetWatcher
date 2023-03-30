@@ -122,14 +122,7 @@ namespace BudgetDjinni.Database.Schemas
         #region Public API
         public void LoadFromId(int id)
         {
-            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
-            rs.FindFirst(Fields.ID + " = " + id);
-
-            if (rs.NoMatch)
-            {
-                rs.Close();
-                throw new Exception("No Expense with ID " + id + " matched");
-            }
+            Recordset rs = Manager.FindFirst(TableName, Fields.ID, id);
 
             Id = (int)rs.Fields[Fields.ID].Value;
             Name = (string)rs.Fields[Fields.Name].Value;
@@ -160,14 +153,7 @@ namespace BudgetDjinni.Database.Schemas
 
         public void Update()
         {
-            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
-            rs.FindFirst(Fields.ID + " = " + Id);
-
-            if (rs.NoMatch)
-            {
-                rs.Close();
-                throw new Exception("No Expense with ID " + Id + " matched");
-            }
+            Recordset rs = Manager.FindFirst(TableName, Fields.ID, Id);
 
             rs.Edit();
             rs.Fields[Fields.Name].Value = Name;
@@ -182,14 +168,7 @@ namespace BudgetDjinni.Database.Schemas
 
         public void Delete()
         {
-            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
-            rs.FindFirst(Fields.ID + " = " + Id);
-
-            if (rs.NoMatch)
-            {
-                rs.Close();
-                throw new Exception("No Expense with ID " + Id + " matched");
-            }
+            Recordset rs = Manager.FindFirst(TableName, Fields.ID, Id);
 
             rs.Delete();
 
