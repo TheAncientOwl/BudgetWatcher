@@ -18,28 +18,6 @@ namespace BudgetDjinni.Database
         #region Properties
         public static Manager Instance { get => s_Instance; }
         public static Access.Dao.Database DbInstance { get => Instance.m_AccessApp.CurrentDb(); }
-        public static Access.Dao.Recordset FindFirst(string tableName, string idField, int id)
-        {
-            Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
-            rs.FindFirst(idField + " = " + id);
-
-            if (rs.NoMatch)
-            {
-                rs.Close();
-                throw new Exception("No record with ID " + id + " matched on table " + tableName);
-            }
-
-            return rs;
-        }
-
-        public static Access.Dao.Recordset NewRecord(string tableName)
-        {
-            Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
-
-            rs.AddNew();
-
-            return rs;
-        }
         #endregion Properties
 
         #region Public API
@@ -66,6 +44,29 @@ namespace BudgetDjinni.Database
             m_AccessApp.CloseCurrentDatabase();
             m_AccessApp.Quit();
             m_AccessApp = null;
+        }
+
+        public static Access.Dao.Recordset FindFirst(string tableName, string idField, int id)
+        {
+            Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
+            rs.FindFirst(idField + " = " + id);
+
+            if (rs.NoMatch)
+            {
+                rs.Close();
+                throw new Exception("No record with ID " + id + " matched on table " + tableName);
+            }
+
+            return rs;
+        }
+
+        public static Access.Dao.Recordset NewRecord(string tableName)
+        {
+            Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
+
+            rs.AddNew();
+
+            return rs;
         }
         #endregion Public API
 
