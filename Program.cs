@@ -5,7 +5,7 @@ using BudgetDjinni.Database.Schemas;
 
 namespace BudgetDjinni
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
