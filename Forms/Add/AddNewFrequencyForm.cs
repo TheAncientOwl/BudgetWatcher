@@ -9,7 +9,7 @@ namespace BudgetWatcher.Forms.Add
             InitializeComponent();
         }
 
-        public string NameData { get => NameTextBox.Text; }
+        public string NameData { get => NameTextBox.Text.Length == 0 ? "NewFrequency" : NameTextBox.Text; }
         public int DaysData { get => (int)DaysUpDown.Value; }
     }
 }

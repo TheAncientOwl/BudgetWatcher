@@ -17,7 +17,7 @@ namespace BudgetWatcher.Forms.Add
             InitializeComponent();
         }
 
-        public string NameData { get => NameTextBox.Text; }
-        public string DescriptionData { get => DescriptionTextBox.Text; }
+        public string NameData { get => NameTextBox.Text.Length == 0 ? "NewCategory" : NameTextBox.Text; }
+        public string DescriptionData { get => DescriptionTextBox.Text.Length == 0 ? "-" : DescriptionTextBox.Text; }
     }
 }
