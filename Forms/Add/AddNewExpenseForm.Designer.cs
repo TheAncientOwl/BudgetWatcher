@@ -171,9 +171,9 @@
             this.DetailsLabel.AutoSize = true;
             this.DetailsLabel.Location = new System.Drawing.Point(481, 33);
             this.DetailsLabel.Name = "DetailsLabel";
-            this.DetailsLabel.Size = new System.Drawing.Size(49, 16);
+            this.DetailsLabel.Size = new System.Drawing.Size(45, 16);
             this.DetailsLabel.TabIndex = 18;
-            this.DetailsLabel.Text = "Details";
+            this.DetailsLabel.Text = "Detalii";
             // 
             // DetailsTextBox
             // 
