@@ -30,7 +30,7 @@ namespace BudgetWatcher
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                if (MessageBox.Show("Sigur doriți să închideți aplicația?", "Confirmă închiderea aplicației",
+                if (MessageBox.Show("Sigur doriți să închideți aplicația?", "BudgetWatcher - Confirmă închiderea aplicației",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     e.Cancel = true;
