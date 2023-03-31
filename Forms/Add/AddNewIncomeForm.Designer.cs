@@ -61,6 +61,7 @@
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(153, 22);
             this.NameTextBox.TabIndex = 2;
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // ValueUpDown
             // 
@@ -85,6 +86,7 @@
             // Button_Ok
             // 
             this.Button_Ok.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Button_Ok.Enabled = false;
             this.Button_Ok.Location = new System.Drawing.Point(58, 125);
             this.Button_Ok.Name = "Button_Ok";
             this.Button_Ok.Size = new System.Drawing.Size(86, 46);

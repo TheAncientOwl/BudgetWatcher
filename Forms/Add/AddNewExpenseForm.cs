@@ -28,7 +28,7 @@ namespace BudgetWatcher.Forms.Add
             }
         }
 
-        public string NameData { get => NameTextBox.Text.Length == 0 ? "NewExpense" : NameTextBox.Text; }
+        public string NameData { get => NameTextBox.Text; }
         public double ValueData { get => (double)ValueUpDown.Value; }
         public DateTime DateData { get => DateTimePicker.Value; }
         public string DetailsData { get => DetailsTextBox.Text.Length == 0 ? "-" : DetailsTextBox.Text; }
@@ -40,12 +40,17 @@ namespace BudgetWatcher.Forms.Add
             DateTimePicker.Value = DateTime.Now;
         }
 
-        private void HandleSelectionIndexChange()
+        private void HandleButtonOkEnabledState()
         {
-            Button_Ok.Enabled = FrequencyComboBox.SelectedIndex != -1 && CategoryComboBox.SelectedIndex != -1;
+            Button_Ok.Enabled =
+                FrequencyComboBox.SelectedIndex != -1 &&
+                CategoryComboBox.SelectedIndex != -1 &&
+                NameTextBox.Text.Length != 0;
         }
 
-        private void FrequencyComboBox_SelectedIndexChanged(object sender, EventArgs e) => HandleSelectionIndexChange();
-        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e) => HandleSelectionIndexChange();
+        private void FrequencyComboBox_SelectedIndexChanged(object sender, EventArgs e) => HandleButtonOkEnabledState();
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e) => HandleButtonOkEnabledState();
+
+        private void NameTextBox_TextChanged(object sender, EventArgs e) => HandleButtonOkEnabledState();
     }
 }
