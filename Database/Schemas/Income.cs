@@ -1,6 +1,7 @@
 ﻿using Microsoft.Office.Interop.Access.Dao;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace BudgetWatcher.Database.Schemas
 {
@@ -70,6 +71,33 @@ namespace BudgetWatcher.Database.Schemas
         #endregion Constructors
 
         #region Public API
+        public static List<Income> FetchAll()
+        {
+            List<Income> incomes = new List<Income>();
+
+            var idProperty = typeof(Income).GetProperty("Id");
+
+            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
+
+            while (!rs.EOF)
+            {
+                Income income = new Income();
+                income.Name = (string)rs.Fields[Fields.Name].Value;
+                income.Value = (double)rs.Fields[Fields.Value].Value;
+
+                int id = (int)rs.Fields[Fields.ID].Value;
+                idProperty.SetValue(income, id);
+
+                incomes.Add(income);
+
+                rs.MoveNext();
+            }
+
+            rs.Close();
+
+            return incomes;
+        }
+
         public void LoadFromId(int id)
         {
             Recordset rs = Manager.FindFirst(TableName, Fields.ID, id);

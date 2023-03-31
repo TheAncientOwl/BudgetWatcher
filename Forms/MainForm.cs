@@ -1,5 +1,6 @@
 ﻿using BudgetWatcher.Database.Schemas;
 using BudgetWatcher.Forms.Add;
+using BudgetWatcher.Forms.List;
 using System;
 using System.Windows.Forms;
 
@@ -16,7 +17,7 @@ namespace BudgetWatcher.Forms
 
         private void Button_OpenAddIncomeForm_Click(object sender, EventArgs e)
         {
-            AddNewIncomeForm form = new AddNewIncomeForm();
+            UpdateIncomeForm form = new AddNewIncomeForm();
             
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -65,6 +66,13 @@ namespace BudgetWatcher.Forms
 
                 ShowInfoMessageBox("Cheltuială adăugată cu succes!");
             }
+        }
+
+        private void Button_ListIncomes_Click(object sender, EventArgs e)
+        {
+            ListIncomesForm form = new ListIncomesForm();
+
+            form.ShowDialog();
         }
     }
 }

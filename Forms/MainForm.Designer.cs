@@ -32,6 +32,7 @@
             this.Button_OpenAddNewCategoryForm = new System.Windows.Forms.Button();
             this.Button_OpenAddNewFrequencyForm = new System.Windows.Forms.Button();
             this.Button_OpenAddNewExpenseForm = new System.Windows.Forms.Button();
+            this.Button_ListIncomes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Button_OpenAddIncomeForm
@@ -74,11 +75,22 @@
             this.Button_OpenAddNewExpenseForm.UseVisualStyleBackColor = true;
             this.Button_OpenAddNewExpenseForm.Click += new System.EventHandler(this.Button_OpenAddNewExpenseForm_Click);
             // 
+            // Button_ListIncomes
+            // 
+            this.Button_ListIncomes.Location = new System.Drawing.Point(236, 101);
+            this.Button_ListIncomes.Name = "Button_ListIncomes";
+            this.Button_ListIncomes.Size = new System.Drawing.Size(173, 56);
+            this.Button_ListIncomes.TabIndex = 4;
+            this.Button_ListIncomes.Text = "Listează veniturile";
+            this.Button_ListIncomes.UseVisualStyleBackColor = true;
+            this.Button_ListIncomes.Click += new System.EventHandler(this.Button_ListIncomes_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(610, 351);
+            this.Controls.Add(this.Button_ListIncomes);
             this.Controls.Add(this.Button_OpenAddNewExpenseForm);
             this.Controls.Add(this.Button_OpenAddNewFrequencyForm);
             this.Controls.Add(this.Button_OpenAddNewCategoryForm);
@@ -97,5 +109,6 @@
         private System.Windows.Forms.Button Button_OpenAddNewCategoryForm;
         private System.Windows.Forms.Button Button_OpenAddNewFrequencyForm;
         private System.Windows.Forms.Button Button_OpenAddNewExpenseForm;
+        private System.Windows.Forms.Button Button_ListIncomes;
     }
 }
