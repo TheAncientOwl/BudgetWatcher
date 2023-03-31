@@ -83,29 +83,29 @@
     <Compile Include="Database\Schemas\ExpenseCategory.cs" />
     <Compile Include="Database\Schemas\ExpenseFrequency.cs" />
     <Compile Include="Database\Schemas\Income.cs" />
-    <Compile Include="Forms\Add\AddNewCategoryForm.cs">
+    <Compile Include="Forms\Data\CategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Add\AddNewCategoryForm.Designer.cs">
-      <DependentUpon>AddNewCategoryForm.cs</DependentUpon>
+    <Compile Include="Forms\Data\CategoryForm.Designer.cs">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Add\AddNewExpenseForm.cs">
+    <Compile Include="Forms\Data\ExpenseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Add\AddNewExpenseForm.Designer.cs">
-      <DependentUpon>AddNewExpenseForm.cs</DependentUpon>
+    <Compile Include="Forms\Data\ExpenseForm.Designer.cs">
+      <DependentUpon>ExpenseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Add\AddNewFrequencyForm.cs">
+    <Compile Include="Forms\Data\FrequencyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Add\AddNewFrequencyForm.Designer.cs">
-      <DependentUpon>AddNewFrequencyForm.cs</DependentUpon>
+    <Compile Include="Forms\Data\FrequencyForm.Designer.cs">
+      <DependentUpon>FrequencyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Add\AddNewIncomeForm.cs">
+    <Compile Include="Forms\Data\IncomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Add\AddNewIncomeForm.Designer.cs">
-      <DependentUpon>AddNewIncomeForm.cs</DependentUpon>
+    <Compile Include="Forms\Data\IncomeForm.Designer.cs">
+      <DependentUpon>IncomeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Feedback\LoadingScreenForm.cs">
       <SubType>Form</SubType>
@@ -132,17 +132,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\Add\AddNewCategoryForm.resx">
-      <DependentUpon>AddNewCategoryForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Data\CategoryForm.resx">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Add\AddNewExpenseForm.resx">
-      <DependentUpon>AddNewExpenseForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Data\ExpenseForm.resx">
+      <DependentUpon>ExpenseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Add\AddNewFrequencyForm.resx">
-      <DependentUpon>AddNewFrequencyForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Data\FrequencyForm.resx">
+      <DependentUpon>FrequencyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Add\AddNewIncomeForm.resx">
-      <DependentUpon>AddNewIncomeForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Data\IncomeForm.resx">
+      <DependentUpon>IncomeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Feedback\LoadingScreenForm.resx">
       <DependentUpon>LoadingScreenForm.cs</DependentUpon>

@@ -1,5 +1,5 @@
 ﻿using BudgetWatcher.Database.Schemas;
-using BudgetWatcher.Forms.Add;
+using BudgetWatcher.Forms.Data;
 using BudgetWatcher.Forms.List;
 using System;
 using System.Windows.Forms;
@@ -17,7 +17,7 @@ namespace BudgetWatcher.Forms
 
         private void Button_OpenAddIncomeForm_Click(object sender, EventArgs e)
         {
-            AddNewIncomeForm form = new AddNewIncomeForm();
+            IncomeForm form = new IncomeForm();
             
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -30,7 +30,7 @@ namespace BudgetWatcher.Forms
 
         private void Button_OpenAddNewCategoryForm_Click(object sender, EventArgs e)
         {
-            AddNewCategoryForm form = new AddNewCategoryForm();
+            CategoryForm form = new CategoryForm();
 
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -43,7 +43,7 @@ namespace BudgetWatcher.Forms
 
         private void Button_OpenAddNewFrequencyForm_Click(object sender, EventArgs e)
         {
-            AddNewFrequencyForm form = new AddNewFrequencyForm();
+            FrequencyForm form = new FrequencyForm();
 
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -56,7 +56,7 @@ namespace BudgetWatcher.Forms
 
         private void Button_OpenAddNewExpenseForm_Click(object sender, EventArgs e)
         {
-            AddNewExpenseForm form = new AddNewExpenseForm();
+            ExpenseForm form = new ExpenseForm();
 
             if (form.ShowDialog() == DialogResult.OK)
             {

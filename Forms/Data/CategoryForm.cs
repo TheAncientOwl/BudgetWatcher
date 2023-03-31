@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace BudgetWatcher.Forms.Add
+namespace BudgetWatcher.Forms.Data
 {
-    public partial class AddNewIncomeForm : Form
+    public partial class CategoryForm : Form
     {
-        public AddNewIncomeForm()
+        public CategoryForm()
         {
             InitializeComponent();
         }
 
         public string NameData { get => NameTextBox.Text; }
-        public double ValueData { get => (double)ValueUpDown.Value; }
+        public string DescriptionData { get => DescriptionTextBox.Text.Length == 0 ? "-" : DescriptionTextBox.Text; }
 
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {

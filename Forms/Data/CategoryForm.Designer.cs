@@ -1,6 +1,6 @@
-﻿namespace BudgetWatcher.Forms.Add
+﻿namespace BudgetWatcher.Forms.Data
 {
-    partial class AddNewCategoryForm
+    partial class CategoryForm
     {
         /// <summary>
         /// Required designer variable.

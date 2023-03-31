@@ -1,6 +1,6 @@
-﻿namespace BudgetWatcher.Forms.Add
+﻿namespace BudgetWatcher.Forms.Data
 {
-    partial class AddNewFrequencyForm
+    partial class FrequencyForm
     {
         /// <summary>
         /// Required designer variable.

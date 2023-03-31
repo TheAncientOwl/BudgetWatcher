@@ -1,10 +1,10 @@
 ﻿using System.Windows.Forms;
 
-namespace BudgetWatcher.Forms.Add
+namespace BudgetWatcher.Forms.Data
 {
-    public partial class AddNewFrequencyForm : Form
+    public partial class FrequencyForm : Form
     {
-        public AddNewFrequencyForm()
+        public FrequencyForm()
         {
             InitializeComponent();
         }

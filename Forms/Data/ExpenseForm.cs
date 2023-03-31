@@ -1,16 +1,17 @@
-﻿using BudgetWatcher.Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace BudgetWatcher.Forms.Add
+using BudgetWatcher.Database;
+
+namespace BudgetWatcher.Forms.Data
 {
-    public partial class AddNewExpenseForm : Form
+    public partial class ExpenseForm : Form
     {
         readonly List<Tuple<int, string>> m_Categories;
         readonly List<Tuple<int, string>> m_Frequencies;
 
-        public AddNewExpenseForm()
+        public ExpenseForm()
         {
             InitializeComponent();
 
