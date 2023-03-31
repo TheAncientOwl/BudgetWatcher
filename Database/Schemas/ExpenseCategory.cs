@@ -1,6 +1,7 @@
-﻿using Microsoft.Office.Interop.Access.Dao;
-using System;
+﻿using System;
 using System.Collections.Generic;
+
+using Microsoft.Office.Interop.Access.Dao;
 
 namespace BudgetWatcher.Database.Schemas
 {
@@ -69,7 +70,6 @@ namespace BudgetWatcher.Database.Schemas
         #endregion Constructors
 
         #region Public API
-
         public static List<ExpenseCategory> FetchAll()
         {
             List<ExpenseCategory> categories = new List<ExpenseCategory>();

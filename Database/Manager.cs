@@ -1,9 +1,10 @@
-﻿using BudgetWatcher.Database.Schemas;
-using Microsoft.Office.Interop.Access.Dao;
-using System;
+﻿using System;
 using System.IO;
 using System.Collections.Generic;
 
+using BudgetWatcher.Database.Schemas;
+
+using Microsoft.Office.Interop.Access.Dao;
 using Access = Microsoft.Office.Interop.Access;
 
 namespace BudgetWatcher.Database
@@ -37,7 +38,6 @@ namespace BudgetWatcher.Database
         #endregion
 
         #region Public API
-
         public List<Tuple<int, string>> PeekCategories()
         {
             List<Tuple<int, string>> categories = new List<Tuple<int, string>>();

@@ -1,6 +1,7 @@
-﻿using Microsoft.Office.Interop.Access.Dao;
-using System;
+﻿using System;
 using System.Collections.Generic;
+
+using Microsoft.Office.Interop.Access.Dao;
 
 namespace BudgetWatcher.Database.Schemas
 {
