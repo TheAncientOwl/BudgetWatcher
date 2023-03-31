@@ -22,6 +22,20 @@ namespace BudgetWatcher.Database
         public static Access.Dao.Database DbInstance { get => Instance.m_AccessApp.CurrentDb(); }
         #endregion Properties
 
+        #region Events
+        public Action OnDatabaseLoad;
+        public Action OnDatabaseLoaded;
+
+        public Action OnDatabaseCreate;
+        public Action OnDatabaseCreated;
+
+        public Action OnDatabaseOpen;
+        public Action OnDatabaseOpened;
+
+        public Action OnDatabaseClose;
+        public Action OnDatabaseClosed;
+        #endregion
+
         #region Public API
 
         public List<Tuple<int, string>> PeekCategories()
@@ -66,6 +80,8 @@ namespace BudgetWatcher.Database
         {
             if (m_AccessApp != null) return;
 
+            OnDatabaseLoad?.Invoke();
+
             m_AccessApp = new Access.Application();
 
             if (File.Exists(DatabaseFilePath))
@@ -76,15 +92,21 @@ namespace BudgetWatcher.Database
             {
                 CreateDatabase();
             }
+
+            OnDatabaseLoaded?.Invoke();
         }
 
         public void CloseDatabase()
         {
             if (m_AccessApp == null) return;
 
+            OnDatabaseClose?.Invoke();
+
             m_AccessApp.CloseCurrentDatabase();
             m_AccessApp.Quit();
             m_AccessApp = null;
+
+            OnDatabaseClosed?.Invoke();
         }
 
         public static Access.Dao.Recordset FindFirst(string tableName, string idField, int id)
@@ -114,11 +136,17 @@ namespace BudgetWatcher.Database
         #region Private API
         void OpenDatabase()
         {
+            OnDatabaseOpen?.Invoke();
+
             m_AccessApp.OpenCurrentDatabase(DatabaseFilePath);
+
+            OnDatabaseOpened?.Invoke();
         }
 
         void CreateDatabase()
         {
+            OnDatabaseCreate?.Invoke();
+
             m_AccessApp.NewCurrentDatabase(DatabaseFilePath);
 
             // create tables
@@ -159,6 +187,8 @@ namespace BudgetWatcher.Database
                 frequency.Days = value.Item2;
                 frequency.Insert();
             }
+
+            OnDatabaseCreated?.Invoke();
         }
         #endregion Private API
     }
