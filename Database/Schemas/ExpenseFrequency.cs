@@ -60,7 +60,7 @@ namespace BudgetWatcher.Database.Schemas
             Days = days;
         }
 
-        public ExpenseFrequency() : this("Empty Frequency", 0) { }
+        public ExpenseFrequency() : this("Empty Frequency", 1) { }
 
         public ExpenseFrequency(int id)
         {

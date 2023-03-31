@@ -108,7 +108,7 @@
             0,
             0});
             // 
-            // AddNewFrequencyForm
+            // FrequencyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -121,8 +121,8 @@
             this.Controls.Add(this.Button_Ok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "AddNewFrequencyForm";
-            this.Text = "Adaugă o frecvență nouă";
+            this.Name = "FrequencyForm";
+            this.Text = "Frecvență";
             ((System.ComponentModel.ISupportInitialize)(this.DaysUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

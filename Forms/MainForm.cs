@@ -18,7 +18,7 @@ namespace BudgetWatcher.Forms
         private void Button_OpenAddIncomeForm_Click(object sender, EventArgs e)
         {
             Income newIncome = new Income();
-            IncomeForm form = new IncomeForm("Adaugă un venit noussdsdsd", newIncome);
+            IncomeForm form = new IncomeForm("Adaugă un venit nou", newIncome);
             
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -44,12 +44,13 @@ namespace BudgetWatcher.Forms
 
         private void Button_OpenAddNewFrequencyForm_Click(object sender, EventArgs e)
         {
-            FrequencyForm form = new FrequencyForm();
+            ExpenseFrequency newFrequency = new ExpenseFrequency();
+            FrequencyForm form = new FrequencyForm("Adăugați o frecvență nouă", newFrequency);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                ExpenseFrequency expenseFrequency = new ExpenseFrequency(form.NameData, form.DaysData);
-                expenseFrequency.Insert();
+                form.FillInData(newFrequency);
+                newFrequency.Insert();
 
                 ShowInfoMessageBox("Frecvență adăugată cu succes!");
             }
