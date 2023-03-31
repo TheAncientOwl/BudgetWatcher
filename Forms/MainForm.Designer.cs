@@ -35,6 +35,7 @@
             this.Button_ListIncomes = new System.Windows.Forms.Button();
             this.Button_ListCategories = new System.Windows.Forms.Button();
             this.Button_ListFrequencies = new System.Windows.Forms.Button();
+            this.Button_ListExpenses = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Button_OpenAddIncomeForm
@@ -107,11 +108,22 @@
             this.Button_ListFrequencies.UseVisualStyleBackColor = true;
             this.Button_ListFrequencies.Click += new System.EventHandler(this.Button_ListFrequencies_Click);
             // 
+            // Button_ListExpenses
+            // 
+            this.Button_ListExpenses.Location = new System.Drawing.Point(236, 26);
+            this.Button_ListExpenses.Name = "Button_ListExpenses";
+            this.Button_ListExpenses.Size = new System.Drawing.Size(173, 56);
+            this.Button_ListExpenses.TabIndex = 7;
+            this.Button_ListExpenses.Text = "Listează cheltuielile";
+            this.Button_ListExpenses.UseVisualStyleBackColor = true;
+            this.Button_ListExpenses.Click += new System.EventHandler(this.Button_ListExpenses_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(610, 351);
+            this.Controls.Add(this.Button_ListExpenses);
             this.Controls.Add(this.Button_ListFrequencies);
             this.Controls.Add(this.Button_ListCategories);
             this.Controls.Add(this.Button_ListIncomes);
@@ -136,5 +148,6 @@
         private System.Windows.Forms.Button Button_ListIncomes;
         private System.Windows.Forms.Button Button_ListCategories;
         private System.Windows.Forms.Button Button_ListFrequencies;
+        private System.Windows.Forms.Button Button_ListExpenses;
     }
 }

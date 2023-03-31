@@ -122,6 +122,37 @@ namespace BudgetWatcher.Database.Schemas
         #endregion Constructors
 
         #region Public API
+        public static List<Expense> FetchAll()
+        {
+            List<Expense> expenses = new List<Expense>();
+
+            var idProperty = typeof(Expense).GetProperty("Id");
+
+            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
+
+            while (!rs.EOF)
+            {
+                Expense expense = new Expense();
+                expense.Name = (string)rs.Fields[Fields.Name].Value;
+                expense.Value = (double)rs.Fields[Fields.Value].Value;
+                expense.Date = (DateTime)rs.Fields[Fields.Date].Value;
+                expense.Details = (string)rs.Fields[Fields.Details].Value;
+                expense.Category = new ExpenseCategory((int)rs.Fields[Fields.CategoryId].Value);
+                expense.Frequency = new ExpenseFrequency((int)rs.Fields[Fields.FrequencyId].Value);
+
+                int id = (int)rs.Fields[Fields.ID].Value;
+                idProperty.SetValue(expense, id);
+
+                expenses.Add(expense);
+
+                rs.MoveNext();
+            }
+
+            rs.Close();
+
+            return expenses;
+        }
+
         public void LoadFromId(int id)
         {
             Recordset rs = Manager.FindFirst(TableName, Fields.ID, id);

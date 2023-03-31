@@ -89,5 +89,12 @@ namespace BudgetWatcher.Forms
 
             form.ShowDialog();
         }
+
+        private void Button_ListExpenses_Click(object sender, EventArgs e)
+        {
+            ListExpensesForm form = new ListExpensesForm();
+
+            form.ShowDialog();
+        }
     }
 }
