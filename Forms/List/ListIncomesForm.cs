@@ -1,4 +1,5 @@
 ﻿using BudgetWatcher.Database.Schemas;
+using BudgetWatcher.Forms.Data;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -28,7 +29,22 @@ namespace BudgetWatcher.Forms.List
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0) // button clicked, open update form
             {
-                MessageBox.Show("Hello!");
+                Income currentIncome = m_Incomes[e.RowIndex];
+
+                IncomeForm form = new IncomeForm("Modifică venitul", currentIncome);
+
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    form.FillInData(currentIncome);
+                    currentIncome.Update();
+
+                    DataGridViewCellCollection cells = IncomesGridView.Rows[e.RowIndex].Cells;
+                    cells[1].Value = currentIncome.Id;
+                    cells[2].Value = currentIncome.Name;
+                    cells[3].Value = currentIncome.Value;
+
+                    Utils.ShowInfoMessageBox("Venit modificat cu succes!");
+                }
             }
         }
     }

@@ -13,8 +13,6 @@ namespace BudgetWatcher.Forms
             InitializeComponent();
         }
 
-        private void ShowInfoMessageBox(string message) => MessageBox.Show(message, "BudgetWatcher - Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         private void Button_OpenAddIncomeForm_Click(object sender, EventArgs e)
         {
             Income newIncome = new Income();
@@ -25,7 +23,7 @@ namespace BudgetWatcher.Forms
                 form.FillInData(newIncome);
                 newIncome.Insert();
 
-                ShowInfoMessageBox("Venit adăugat cu succes!");
+                Utils.ShowInfoMessageBox("Venit adăugat cu succes!");
             }
         }
 
@@ -39,7 +37,7 @@ namespace BudgetWatcher.Forms
                 form.FillInData(newCategory);
                 newCategory.Insert();
 
-                ShowInfoMessageBox("Categorie adăugată cu succes!");
+                Utils.ShowInfoMessageBox("Categorie adăugată cu succes!");
             }
         }
 
@@ -53,7 +51,7 @@ namespace BudgetWatcher.Forms
                 form.FillInData(newFrequency);
                 newFrequency.Insert();
 
-                ShowInfoMessageBox("Frecvență adăugată cu succes!");
+                Utils.ShowInfoMessageBox("Frecvență adăugată cu succes!");
             }
         }
 
@@ -67,7 +65,7 @@ namespace BudgetWatcher.Forms
                 form.FillInData(newExpense);
                 newExpense.Insert();
 
-                ShowInfoMessageBox("Cheltuială adăugată cu succes!");
+                Utils.ShowInfoMessageBox("Cheltuială adăugată cu succes!");
             }
         }
 
