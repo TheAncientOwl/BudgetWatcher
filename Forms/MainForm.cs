@@ -1,6 +1,5 @@
 ﻿using BudgetWatcher.Database.Schemas;
 using BudgetWatcher.Forms.Add;
-using BudgetWatcher.Forms.Feedback;
 using System;
 using System.Windows.Forms;
 
@@ -13,15 +12,7 @@ namespace BudgetWatcher.Forms
             InitializeComponent();
         }
 
-        private void ShowInfo(string message)
-        {
-            InfoForm infoForm = new InfoForm(message);
-
-            if (infoForm.ShowDialog() == DialogResult.OK)
-            {
-                infoForm.Close();
-            }
-        }
+        private void ShowInfoMessageBox(string message) => MessageBox.Show(message, "BudgetWatcher - Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         private void Button_OpenAddIncomeForm_Click(object sender, EventArgs e)
         {
@@ -32,7 +23,7 @@ namespace BudgetWatcher.Forms
                 Income newIncome = new Income(form.NameData, form.ValueData);
                 newIncome.Insert();
 
-                ShowInfo("Venit adăugat cu succes!");
+                ShowInfoMessageBox("Venit adăugat cu succes!");
             }
         }
 
@@ -45,7 +36,7 @@ namespace BudgetWatcher.Forms
                 ExpenseCategory expenseCategory = new ExpenseCategory(form.NameData, form.DescriptionData);
                 expenseCategory.Insert();
 
-                ShowInfo("Categorie adăugată cu succes!");
+                ShowInfoMessageBox("Categorie adăugată cu succes!");
             }
         }
 
@@ -58,7 +49,7 @@ namespace BudgetWatcher.Forms
                 ExpenseFrequency expenseFrequency = new ExpenseFrequency(form.NameData, form.DaysData);
                 expenseFrequency.Insert();
 
-                ShowInfo("Frecvență adăugată cu succes!");
+                ShowInfoMessageBox("Frecvență adăugată cu succes!");
             }
         }
 
@@ -72,7 +63,7 @@ namespace BudgetWatcher.Forms
                 
                 expense.Insert();
 
-                ShowInfo("Cheltuială adăugată cu succes!");
+                ShowInfoMessageBox("Cheltuială adăugată cu succes!");
             }
         }
     }
