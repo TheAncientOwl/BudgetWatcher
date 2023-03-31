@@ -59,13 +59,13 @@ namespace BudgetWatcher.Forms
 
         private void Button_OpenAddNewExpenseForm_Click(object sender, EventArgs e)
         {
-            ExpenseForm form = new ExpenseForm();
+            Expense newExpense = new Expense();
+            ExpenseForm form = new ExpenseForm("Adăugați o cheltuială nouă", newExpense);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                Expense expense = new Expense(form.NameData, form.ValueData, form.DateData, form.DetailsData, form.CategoryIdData, form.FrequencyIdData);
-                
-                expense.Insert();
+                form.FillInData(newExpense);
+                newExpense.Insert();
 
                 ShowInfoMessageBox("Cheltuială adăugată cu succes!");
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 using BudgetWatcher.Database;
+using BudgetWatcher.Database.Schemas;
 
 namespace BudgetWatcher.Forms.Data
 {
@@ -11,10 +12,11 @@ namespace BudgetWatcher.Forms.Data
         readonly List<Tuple<int, string>> m_Categories;
         readonly List<Tuple<int, string>> m_Frequencies;
 
-        public ExpenseForm()
+        public ExpenseForm(string formTitle, Expense defaultExpense)
         {
             InitializeComponent();
 
+            // fetch categories and frequencies
             m_Categories = Manager.Instance.PeekCategories();
             m_Frequencies = Manager.Instance.PeekFrequencies();
 
@@ -27,6 +29,30 @@ namespace BudgetWatcher.Forms.Data
             {
                 FrequencyComboBox.Items.Add(frequencies.Item2);
             }
+
+            // fill in defaults
+            Text = formTitle;
+
+            NameTextBox.Text = defaultExpense.Name;
+            ValueUpDown.Value = (decimal)defaultExpense.Value;
+            DateTimePicker.Value = defaultExpense.Date;
+            DetailsTextBox.Text = defaultExpense.Details;
+
+            FrequencyComboBox.SelectedIndex = defaultExpense.Frequency == null ? -1 : m_Frequencies.FindIndex(
+                (frequency) => frequency.Item1 == defaultExpense.Frequency.Id);
+
+            CategoryComboBox.SelectedIndex = defaultExpense.Category == null ? -1 : m_Categories.FindIndex(
+                (category) => category.Item1 == defaultExpense.Category.Id);
+        }
+
+        public void FillInData(Expense expense)
+        {
+            expense.Name = NameTextBox.Text;
+            expense.Value = (double)ValueUpDown.Value;
+            expense.Date = DateTimePicker.Value;
+            expense.Details = DetailsTextBox.Text.Length == 0 ? "-" : DetailsTextBox.Text;
+            expense.Frequency = new ExpenseFrequency(m_Frequencies[FrequencyComboBox.SelectedIndex].Item1);
+            expense.Category = new ExpenseCategory(m_Categories[CategoryComboBox.SelectedIndex].Item1);
         }
 
         public string NameData { get => NameTextBox.Text; }
