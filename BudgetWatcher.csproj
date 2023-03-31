@@ -125,12 +125,6 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Update\UpdateIncomeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Update\UpdateIncomeForm.Designer.cs">
-      <DependentUpon>UpdateIncomeForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -158,9 +152,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Update\UpdateIncomeForm.resx">
-      <DependentUpon>UpdateIncomeForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -17,7 +17,7 @@ namespace BudgetWatcher.Forms
 
         private void Button_OpenAddIncomeForm_Click(object sender, EventArgs e)
         {
-            UpdateIncomeForm form = new AddNewIncomeForm();
+            AddNewIncomeForm form = new AddNewIncomeForm();
             
             if (form.ShowDialog() == DialogResult.OK)
             {
