@@ -41,7 +41,7 @@
             // 
             this.Button_Ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Button_Ok.Enabled = false;
-            this.Button_Ok.Location = new System.Drawing.Point(65, 140);
+            this.Button_Ok.Location = new System.Drawing.Point(81, 140);
             this.Button_Ok.Name = "Button_Ok";
             this.Button_Ok.Size = new System.Drawing.Size(86, 46);
             this.Button_Ok.TabIndex = 5;
@@ -51,7 +51,7 @@
             // Button_Cancel
             // 
             this.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Button_Cancel.Location = new System.Drawing.Point(235, 140);
+            this.Button_Cancel.Location = new System.Drawing.Point(253, 140);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(86, 46);
             this.Button_Cancel.TabIndex = 6;
@@ -80,7 +80,7 @@
             // 
             this.NameTextBox.Location = new System.Drawing.Point(166, 34);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(220, 22);
+            this.NameTextBox.Size = new System.Drawing.Size(228, 22);
             this.NameTextBox.TabIndex = 9;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
@@ -98,7 +98,7 @@
             0,
             0});
             this.DaysUpDown.Name = "DaysUpDown";
-            this.DaysUpDown.Size = new System.Drawing.Size(220, 22);
+            this.DaysUpDown.Size = new System.Drawing.Size(228, 22);
             this.DaysUpDown.TabIndex = 10;
             this.DaysUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.DaysUpDown.ThousandsSeparator = true;
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 221);
+            this.ClientSize = new System.Drawing.Size(426, 219);
             this.Controls.Add(this.DaysUpDown);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.DaysLabel);
@@ -122,7 +122,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "AddNewFrequencyForm";
-            this.Text = "AddNewFrequencyForm";
+            this.Text = "Adaugă o frecvență nouă";
             ((System.ComponentModel.ISupportInitialize)(this.DaysUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

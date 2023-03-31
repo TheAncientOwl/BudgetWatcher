@@ -59,7 +59,7 @@
             // 
             this.NameTextBox.Location = new System.Drawing.Point(150, 36);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(153, 22);
+            this.NameTextBox.Size = new System.Drawing.Size(204, 22);
             this.NameTextBox.TabIndex = 2;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
@@ -78,7 +78,7 @@
             0,
             0});
             this.ValueUpDown.Name = "ValueUpDown";
-            this.ValueUpDown.Size = new System.Drawing.Size(153, 22);
+            this.ValueUpDown.Size = new System.Drawing.Size(204, 22);
             this.ValueUpDown.TabIndex = 3;
             this.ValueUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ValueUpDown.ThousandsSeparator = true;
@@ -87,7 +87,7 @@
             // 
             this.Button_Ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Button_Ok.Enabled = false;
-            this.Button_Ok.Location = new System.Drawing.Point(58, 125);
+            this.Button_Ok.Location = new System.Drawing.Point(67, 128);
             this.Button_Ok.Name = "Button_Ok";
             this.Button_Ok.Size = new System.Drawing.Size(86, 46);
             this.Button_Ok.TabIndex = 4;
@@ -97,7 +97,7 @@
             // Button_Cancel
             // 
             this.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Button_Cancel.Location = new System.Drawing.Point(205, 125);
+            this.Button_Cancel.Location = new System.Drawing.Point(239, 128);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(86, 46);
             this.Button_Cancel.TabIndex = 5;
@@ -108,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 193);
+            this.ClientSize = new System.Drawing.Size(399, 203);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Ok);
             this.Controls.Add(this.ValueUpDown);
@@ -118,7 +118,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "AddNewIncomeForm";
-            this.Text = "Venit Nou";
+            this.Text = "Adaugă un venit nou";
             ((System.ComponentModel.ISupportInitialize)(this.ValueUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

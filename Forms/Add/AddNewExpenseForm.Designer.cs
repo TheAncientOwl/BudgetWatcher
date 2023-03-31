@@ -188,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 400);
+            this.ClientSize = new System.Drawing.Size(629, 400);
             this.Controls.Add(this.DetailsTextBox);
             this.Controls.Add(this.DetailsLabel);
             this.Controls.Add(this.CategoryComboBox);
@@ -207,7 +207,7 @@
             this.MaximizeBox = false;
             this.Name = "AddNewExpenseForm";
             this.Padding = new System.Windows.Forms.Padding(1);
-            this.Text = "Cheltuială nouă";
+            this.Text = "Adaugă o cheltuială nouă";
             this.Load += new System.EventHandler(this.AddNewExpenseForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ValueUpDown)).EndInit();
             this.ResumeLayout(false);
