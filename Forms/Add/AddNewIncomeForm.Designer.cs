@@ -113,6 +113,8 @@
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.ValueLabel);
             this.Controls.Add(this.NameLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "AddNewIncomeForm";
             this.Text = "Venit Nou";
             ((System.ComponentModel.ISupportInitialize)(this.ValueUpDown)).EndInit();
