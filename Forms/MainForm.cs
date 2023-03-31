@@ -61,5 +61,19 @@ namespace BudgetWatcher.Forms
                 ShowInfo("Frecvență adăugată cu succes!");
             }
         }
+
+        private void Button_OpenAddNewExpenseForm_Click(object sender, EventArgs e)
+        {
+            AddNewExpenseForm form = new AddNewExpenseForm();
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                Expense expense = new Expense(form.NameData, form.ValueData, form.DateData, form.DetailsData, form.CategoryIdData, form.FrequencyIdData);
+                
+                expense.Insert();
+
+                ShowInfo("Cheltuială adăugată cu succes!");
+            }
+        }
     }
 }

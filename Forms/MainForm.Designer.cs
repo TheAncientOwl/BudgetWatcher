@@ -31,6 +31,7 @@
             this.Button_OpenAddIncomeForm = new System.Windows.Forms.Button();
             this.Button_OpenAddNewCategoryForm = new System.Windows.Forms.Button();
             this.Button_OpenAddNewFrequencyForm = new System.Windows.Forms.Button();
+            this.Button_OpenAddNewExpenseForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Button_OpenAddIncomeForm
@@ -45,7 +46,7 @@
             // 
             // Button_OpenAddNewCategoryForm
             // 
-            this.Button_OpenAddNewCategoryForm.Location = new System.Drawing.Point(12, 94);
+            this.Button_OpenAddNewCategoryForm.Location = new System.Drawing.Point(12, 99);
             this.Button_OpenAddNewCategoryForm.Name = "Button_OpenAddNewCategoryForm";
             this.Button_OpenAddNewCategoryForm.Size = new System.Drawing.Size(173, 56);
             this.Button_OpenAddNewCategoryForm.TabIndex = 1;
@@ -63,11 +64,22 @@
             this.Button_OpenAddNewFrequencyForm.UseVisualStyleBackColor = true;
             this.Button_OpenAddNewFrequencyForm.Click += new System.EventHandler(this.Button_OpenAddNewFrequencyForm_Click);
             // 
+            // Button_OpenAddNewExpenseForm
+            // 
+            this.Button_OpenAddNewExpenseForm.Location = new System.Drawing.Point(12, 251);
+            this.Button_OpenAddNewExpenseForm.Name = "Button_OpenAddNewExpenseForm";
+            this.Button_OpenAddNewExpenseForm.Size = new System.Drawing.Size(173, 56);
+            this.Button_OpenAddNewExpenseForm.TabIndex = 3;
+            this.Button_OpenAddNewExpenseForm.Text = "Adaugă o cheltuială nouă";
+            this.Button_OpenAddNewExpenseForm.UseVisualStyleBackColor = true;
+            this.Button_OpenAddNewExpenseForm.Click += new System.EventHandler(this.Button_OpenAddNewExpenseForm_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(610, 431);
+            this.Controls.Add(this.Button_OpenAddNewExpenseForm);
             this.Controls.Add(this.Button_OpenAddNewFrequencyForm);
             this.Controls.Add(this.Button_OpenAddNewCategoryForm);
             this.Controls.Add(this.Button_OpenAddIncomeForm);
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Button Button_OpenAddIncomeForm;
         private System.Windows.Forms.Button Button_OpenAddNewCategoryForm;
         private System.Windows.Forms.Button Button_OpenAddNewFrequencyForm;
+        private System.Windows.Forms.Button Button_OpenAddNewExpenseForm;
     }
 }

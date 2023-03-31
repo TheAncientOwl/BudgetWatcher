@@ -2,6 +2,8 @@
 using Microsoft.Office.Interop.Access.Dao;
 using System;
 using System.IO;
+using System.Collections.Generic;
+
 using Access = Microsoft.Office.Interop.Access;
 
 namespace BudgetWatcher.Database
@@ -21,6 +23,45 @@ namespace BudgetWatcher.Database
         #endregion Properties
 
         #region Public API
+
+        public List<Tuple<int, string>> PeekCategories()
+        {
+            List<Tuple<int, string>> categories = new List<Tuple<int, string>>();
+
+            Recordset rs = DbInstance.OpenRecordset(ExpenseCategory.TableName, RecordsetTypeEnum.dbOpenDynaset);
+
+            while(!rs.EOF)
+            {
+                categories.Add(new Tuple<int, string>(rs.Fields[ExpenseCategory.Fields.ID].Value, 
+                                                      rs.Fields[ExpenseCategory.Fields.Name].Value));
+
+                rs.MoveNext();
+            }
+
+            rs.Close();
+
+            return categories;
+        }
+
+        public List<Tuple<int, string>> PeekFrequencies()
+        {
+            List<Tuple<int, string>> frequencies = new List<Tuple<int, string>>();
+
+            Recordset rs = DbInstance.OpenRecordset(ExpenseFrequency.TableName, RecordsetTypeEnum.dbOpenDynaset);
+
+            while (!rs.EOF)
+            {
+                frequencies.Add(new Tuple<int, string>(rs.Fields[ExpenseFrequency.Fields.ID].Value,
+                                                      rs.Fields[ExpenseFrequency.Fields.Name].Value));
+
+                rs.MoveNext();
+            }
+
+            rs.Close();
+
+            return frequencies;
+        }
+
         public void OpenOrCreateDatabase()
         {
             if (m_AccessApp != null) return;
