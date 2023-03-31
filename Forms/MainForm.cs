@@ -31,12 +31,13 @@ namespace BudgetWatcher.Forms
 
         private void Button_OpenAddNewCategoryForm_Click(object sender, EventArgs e)
         {
-            CategoryForm form = new CategoryForm();
+            ExpenseCategory newCategory = new ExpenseCategory();
+            CategoryForm form = new CategoryForm("Adăugați o categorie nouă", newCategory);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                ExpenseCategory expenseCategory = new ExpenseCategory(form.NameData, form.DescriptionData);
-                expenseCategory.Insert();
+                form.FillInData(newCategory);
+                newCategory.Insert();
 
                 ShowInfoMessageBox("Categorie adăugată cu succes!");
             }
