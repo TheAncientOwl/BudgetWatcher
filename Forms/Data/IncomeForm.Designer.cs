@@ -104,7 +104,7 @@
             this.Button_Cancel.Text = "Cancel";
             this.Button_Cancel.UseVisualStyleBackColor = true;
             // 
-            // AddNewIncomeForm
+            // IncomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -117,8 +117,8 @@
             this.Controls.Add(this.NameLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "AddNewIncomeForm";
-            this.Text = "Adaugă un venit nou";
+            this.Name = "IncomeForm";
+            this.Text = "Venit";
             ((System.ComponentModel.ISupportInitialize)(this.ValueUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

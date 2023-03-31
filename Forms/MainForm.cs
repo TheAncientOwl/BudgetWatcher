@@ -17,11 +17,12 @@ namespace BudgetWatcher.Forms
 
         private void Button_OpenAddIncomeForm_Click(object sender, EventArgs e)
         {
-            IncomeForm form = new IncomeForm();
+            Income newIncome = new Income();
+            IncomeForm form = new IncomeForm("Adaugă un venit noussdsdsd", newIncome);
             
             if (form.ShowDialog() == DialogResult.OK)
             {
-                Income newIncome = new Income(form.NameData, form.ValueData);
+                form.FillInData(newIncome);
                 newIncome.Insert();
 
                 ShowInfoMessageBox("Venit adăugat cu succes!");
