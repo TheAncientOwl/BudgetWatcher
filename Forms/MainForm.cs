@@ -82,5 +82,12 @@ namespace BudgetWatcher.Forms
 
             form.ShowDialog();
         }
+
+        private void Button_ListFrequencies_Click(object sender, EventArgs e)
+        {
+            ListFrequenciesForm form = new ListFrequenciesForm();
+
+            form.ShowDialog();
+        }
     }
 }

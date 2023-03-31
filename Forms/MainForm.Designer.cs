@@ -34,6 +34,7 @@
             this.Button_OpenAddNewExpenseForm = new System.Windows.Forms.Button();
             this.Button_ListIncomes = new System.Windows.Forms.Button();
             this.Button_ListCategories = new System.Windows.Forms.Button();
+            this.Button_ListFrequencies = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Button_OpenAddIncomeForm
@@ -96,11 +97,22 @@
             this.Button_ListCategories.UseVisualStyleBackColor = true;
             this.Button_ListCategories.Click += new System.EventHandler(this.Button_ListCategories_Click);
             // 
+            // Button_ListFrequencies
+            // 
+            this.Button_ListFrequencies.Location = new System.Drawing.Point(236, 258);
+            this.Button_ListFrequencies.Name = "Button_ListFrequencies";
+            this.Button_ListFrequencies.Size = new System.Drawing.Size(173, 56);
+            this.Button_ListFrequencies.TabIndex = 6;
+            this.Button_ListFrequencies.Text = "Listează frecvențele";
+            this.Button_ListFrequencies.UseVisualStyleBackColor = true;
+            this.Button_ListFrequencies.Click += new System.EventHandler(this.Button_ListFrequencies_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(610, 351);
+            this.Controls.Add(this.Button_ListFrequencies);
             this.Controls.Add(this.Button_ListCategories);
             this.Controls.Add(this.Button_ListIncomes);
             this.Controls.Add(this.Button_OpenAddNewExpenseForm);
@@ -123,5 +135,6 @@
         private System.Windows.Forms.Button Button_OpenAddNewExpenseForm;
         private System.Windows.Forms.Button Button_ListIncomes;
         private System.Windows.Forms.Button Button_ListCategories;
+        private System.Windows.Forms.Button Button_ListFrequencies;
     }
 }
