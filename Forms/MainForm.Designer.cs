@@ -30,6 +30,7 @@
         {
             this.Button_OpenAddIncomeForm = new System.Windows.Forms.Button();
             this.Button_OpenAddNewCategoryForm = new System.Windows.Forms.Button();
+            this.Button_OpenAddNewFrequencyForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Button_OpenAddIncomeForm
@@ -52,11 +53,22 @@
             this.Button_OpenAddNewCategoryForm.UseVisualStyleBackColor = true;
             this.Button_OpenAddNewCategoryForm.Click += new System.EventHandler(this.Button_OpenAddNewCategoryForm_Click);
             // 
+            // Button_OpenAddNewFrequencyForm
+            // 
+            this.Button_OpenAddNewFrequencyForm.Location = new System.Drawing.Point(12, 174);
+            this.Button_OpenAddNewFrequencyForm.Name = "Button_OpenAddNewFrequencyForm";
+            this.Button_OpenAddNewFrequencyForm.Size = new System.Drawing.Size(173, 56);
+            this.Button_OpenAddNewFrequencyForm.TabIndex = 2;
+            this.Button_OpenAddNewFrequencyForm.Text = "Adaugă o frecvență nouă";
+            this.Button_OpenAddNewFrequencyForm.UseVisualStyleBackColor = true;
+            this.Button_OpenAddNewFrequencyForm.Click += new System.EventHandler(this.Button_OpenAddNewFrequencyForm_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Button_OpenAddNewFrequencyForm);
             this.Controls.Add(this.Button_OpenAddNewCategoryForm);
             this.Controls.Add(this.Button_OpenAddIncomeForm);
             this.Name = "MainForm";
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.Button Button_OpenAddIncomeForm;
         private System.Windows.Forms.Button Button_OpenAddNewCategoryForm;
+        private System.Windows.Forms.Button Button_OpenAddNewFrequencyForm;
     }
 }

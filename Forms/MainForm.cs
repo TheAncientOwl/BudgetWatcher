@@ -48,5 +48,18 @@ namespace BudgetWatcher.Forms
                 ShowInfo("Categorie adăugată cu succes!");
             }
         }
+
+        private void Button_OpenAddNewFrequencyForm_Click(object sender, EventArgs e)
+        {
+            AddNewFrequencyForm form = new AddNewFrequencyForm();
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                ExpenseFrequency expenseFrequency = new ExpenseFrequency(form.NameData, form.DaysData);
+                expenseFrequency.Insert();
+
+                ShowInfo("Frecvență adăugată cu succes!");
+            }
+        }
     }
 }
