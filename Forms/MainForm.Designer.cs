@@ -36,7 +36,7 @@
             // 
             // Button_OpenAddIncomeForm
             // 
-            this.Button_OpenAddIncomeForm.Location = new System.Drawing.Point(12, 21);
+            this.Button_OpenAddIncomeForm.Location = new System.Drawing.Point(31, 101);
             this.Button_OpenAddIncomeForm.Name = "Button_OpenAddIncomeForm";
             this.Button_OpenAddIncomeForm.Size = new System.Drawing.Size(173, 56);
             this.Button_OpenAddIncomeForm.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // Button_OpenAddNewCategoryForm
             // 
-            this.Button_OpenAddNewCategoryForm.Location = new System.Drawing.Point(12, 99);
+            this.Button_OpenAddNewCategoryForm.Location = new System.Drawing.Point(31, 176);
             this.Button_OpenAddNewCategoryForm.Name = "Button_OpenAddNewCategoryForm";
             this.Button_OpenAddNewCategoryForm.Size = new System.Drawing.Size(173, 56);
             this.Button_OpenAddNewCategoryForm.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // Button_OpenAddNewFrequencyForm
             // 
-            this.Button_OpenAddNewFrequencyForm.Location = new System.Drawing.Point(12, 174);
+            this.Button_OpenAddNewFrequencyForm.Location = new System.Drawing.Point(31, 258);
             this.Button_OpenAddNewFrequencyForm.Name = "Button_OpenAddNewFrequencyForm";
             this.Button_OpenAddNewFrequencyForm.Size = new System.Drawing.Size(173, 56);
             this.Button_OpenAddNewFrequencyForm.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             // Button_OpenAddNewExpenseForm
             // 
-            this.Button_OpenAddNewExpenseForm.Location = new System.Drawing.Point(12, 251);
+            this.Button_OpenAddNewExpenseForm.Location = new System.Drawing.Point(31, 26);
             this.Button_OpenAddNewExpenseForm.Name = "Button_OpenAddNewExpenseForm";
             this.Button_OpenAddNewExpenseForm.Size = new System.Drawing.Size(173, 56);
             this.Button_OpenAddNewExpenseForm.TabIndex = 3;
@@ -78,11 +78,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 431);
+            this.ClientSize = new System.Drawing.Size(610, 351);
             this.Controls.Add(this.Button_OpenAddNewExpenseForm);
             this.Controls.Add(this.Button_OpenAddNewFrequencyForm);
             this.Controls.Add(this.Button_OpenAddNewCategoryForm);
             this.Controls.Add(this.Button_OpenAddIncomeForm);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "BudgetWatcher";
             this.ResumeLayout(false);
