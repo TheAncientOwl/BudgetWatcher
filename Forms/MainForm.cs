@@ -75,5 +75,12 @@ namespace BudgetWatcher.Forms
 
             form.ShowDialog();
         }
+
+        private void Button_ListCategories_Click(object sender, EventArgs e)
+        {
+            ListCategoriesForm form = new ListCategoriesForm();
+
+            form.ShowDialog();
+        }
     }
 }
