@@ -34,7 +34,7 @@
             // 
             // MessageTextBox
             // 
-            this.MessageTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.MessageTextBox.BackColor = System.Drawing.SystemColors.HighlightText;
             this.MessageTextBox.Location = new System.Drawing.Point(29, 12);
             this.MessageTextBox.Multiline = true;
             this.MessageTextBox.Name = "MessageTextBox";
@@ -45,7 +45,7 @@
             // 
             // ButtonOk
             // 
-            this.ButtonOk.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ButtonOk.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ButtonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.ButtonOk.Location = new System.Drawing.Point(109, 105);
             this.ButtonOk.Name = "ButtonOk";
@@ -58,10 +58,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(290, 172);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(290, 173);
             this.Controls.Add(this.ButtonOk);
             this.Controls.Add(this.MessageTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "InfoForm";
             this.Text = "Info";
             this.ResumeLayout(false);
