@@ -17,8 +17,8 @@ namespace BudgetWatcher.Forms.Data
             InitializeComponent();
 
             // fetch categories and frequencies
-            m_Categories = Manager.Instance.PeekCategories();
-            m_Frequencies = Manager.Instance.PeekFrequencies();
+            m_Categories = Manager.Instance.Peek(ExpenseCategory.TableName, ExpenseCategory.Fields.ID, ExpenseCategory.Fields.Name);
+            m_Frequencies = Manager.Instance.Peek(ExpenseFrequency.TableName, ExpenseFrequency.Fields.ID, ExpenseFrequency.Fields.Name);
 
             foreach (var category in m_Categories)
             {

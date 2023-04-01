@@ -100,42 +100,22 @@ namespace BudgetWatcher.Database
             rs.Close();
         }
 
-        public List<Tuple<int, string>> PeekCategories()
+        public List<Tuple<int, string>> Peek(string tableName, string intField, string stringField)
         {
-            List<Tuple<int, string>> categories = new List<Tuple<int, string>>();
+            List<Tuple<int, string>> objects = new List<Tuple<int, string>>();
 
-            Recordset rs = DbInstance.OpenRecordset(ExpenseCategory.TableName, RecordsetTypeEnum.dbOpenDynaset);
+            Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
 
-            while (!rs.EOF)
+            while(!rs.EOF)
             {
-                categories.Add(new Tuple<int, string>(rs.Fields[ExpenseCategory.Fields.ID].Value,
-                                                      rs.Fields[ExpenseCategory.Fields.Name].Value));
+                objects.Add(new Tuple<int, string>(rs.Fields[intField].Value, rs.Fields[stringField].Value));
 
                 rs.MoveNext();
             }
 
             rs.Close();
 
-            return categories;
-        }
-
-        public List<Tuple<int, string>> PeekFrequencies()
-        {
-            List<Tuple<int, string>> frequencies = new List<Tuple<int, string>>();
-
-            Recordset rs = DbInstance.OpenRecordset(ExpenseFrequency.TableName, RecordsetTypeEnum.dbOpenDynaset);
-
-            while (!rs.EOF)
-            {
-                frequencies.Add(new Tuple<int, string>(rs.Fields[ExpenseFrequency.Fields.ID].Value,
-                                                      rs.Fields[ExpenseFrequency.Fields.Name].Value));
-
-                rs.MoveNext();
-            }
-
-            rs.Close();
-
-            return frequencies;
+            return objects;
         }
 
         public void OpenOrCreateDatabase()
