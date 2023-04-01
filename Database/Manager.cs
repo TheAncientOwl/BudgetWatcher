@@ -43,6 +43,47 @@ namespace BudgetWatcher.Database
             return null;
         }
 
+        public void SelectFrom<T>(string tableName, int id, T dbObject) where T : IDatabaseObject
+        {
+            Recordset rs = FindFirst(tableName, dbObject.IdTableField, id);
+
+            dbObject.LoadFromRecordset(rs);
+
+            rs.Close();
+        }
+
+        public void InsertInto<T>(string tableName, T dbObject) where T : IDatabaseObject
+        {
+            Recordset rs = NewRecord(tableName);
+
+            typeof(T).GetProperty(dbObject.IdProperty).SetValue(dbObject, (int)rs.Fields[dbObject.IdTableField].Value);
+
+            dbObject.FillInRecordset(rs);
+
+            rs.Update();
+            rs.Close();
+        }
+
+        public void Update<T>(string tableName, T dbObject) where T : IDatabaseObject
+        {
+            Recordset rs = FindFirst(tableName, dbObject.IdTableField, dbObject.ID);
+
+            rs.Edit();
+            dbObject.FillInRecordset(rs);
+
+            rs.Update();
+            rs.Close();
+        }
+
+        public void Delete<T>(string tableName, T dbObject) where T : IDatabaseObject
+        {
+            Recordset rs = FindFirst(tableName, dbObject.IdTableField, dbObject.ID);
+
+            rs.Delete();
+
+            rs.Close();
+        }
+
         public List<Tuple<int, string>> PeekCategories()
         {
             List<Tuple<int, string>> categories = new List<Tuple<int, string>>();
@@ -114,7 +155,7 @@ namespace BudgetWatcher.Database
             OnDatabaseClosed?.Invoke();
         }
 
-        public static Access.Dao.Recordset FindFirst(string tableName, string idField, int id)
+        public static Recordset FindFirst(string tableName, string idField, int id)
         {
             Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
             rs.FindFirst(idField + " = " + id);
@@ -128,7 +169,7 @@ namespace BudgetWatcher.Database
             return rs;
         }
 
-        public static Access.Dao.Recordset NewRecord(string tableName)
+        public static Recordset NewRecord(string tableName)
         {
             Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
 

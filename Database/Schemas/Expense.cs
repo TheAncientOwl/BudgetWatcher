@@ -98,6 +98,10 @@ namespace BudgetWatcher.Database.Schemas
         public string Details { get; set; }
         public ExpenseCategory Category { get; set; }
         public ExpenseFrequency Frequency { get; set; }
+
+        public int ID => Id;
+        public string IdProperty => "Id";
+        public string IdTableField => Fields.ID;
         #endregion Properties
 
         #region Constructors
@@ -118,7 +122,7 @@ namespace BudgetWatcher.Database.Schemas
 
         public Expense(int id)
         {
-            LoadFromId(id);
+            Manager.Instance.SelectFrom(TableName, id, this);
         }
         #endregion Constructors
 
@@ -175,46 +179,11 @@ namespace BudgetWatcher.Database.Schemas
             rs.Fields[Fields.FrequencyId].Value = Frequency.Id;
         }
 
-        public void LoadFromId(int id)
-        {
-            Recordset rs = Manager.FindFirst(TableName, Fields.ID, id);
+        public void Insert() => Manager.Instance.InsertInto(TableName, this);
 
-            LoadFromRecordset(rs);
+        public void Update() => Manager.Instance.Update(TableName, this);
 
-            rs.Close();
-        }
-
-        public void Insert()
-        {
-            Recordset rs = Manager.NewRecord(TableName);
-
-            Id = (int)rs.Fields[Fields.ID].Value;
-
-            FillInRecordset(rs);
-
-            rs.Update();
-            rs.Close();
-        }
-
-        public void Update()
-        {
-            Recordset rs = Manager.FindFirst(TableName, Fields.ID, Id);
-
-            rs.Edit();
-            FillInRecordset(rs);
-
-            rs.Update();
-            rs.Close();
-        }
-
-        public void Delete()
-        {
-            Recordset rs = Manager.FindFirst(TableName, Fields.ID, Id);
-
-            rs.Delete();
-
-            rs.Close();
-        }
+        public void Delete() => Manager.Instance.Delete(TableName, this);
 
         public bool Equals(Expense other) =>
             (Id == other.Id) && (Name == other.Name) && (Value == other.Value) && (Details == other.Details) &&

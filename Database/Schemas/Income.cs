@@ -52,6 +52,10 @@ namespace BudgetWatcher.Database.Schemas
         public int Id { get; private set; }
         public string Name { get; set; }
         public double Value { get; set; }
+
+        public int ID => Id;
+        public string IdProperty => "Id";
+        public string IdTableField => Fields.ID;
         #endregion Properites
 
         #region Constructors
@@ -66,7 +70,7 @@ namespace BudgetWatcher.Database.Schemas
 
         public Income(int id)
         {
-            LoadFromId(id);
+            Manager.Instance.SelectFrom(TableName, id, this);
         }
 
         public Income(Recordset recordSet)
@@ -116,46 +120,11 @@ namespace BudgetWatcher.Database.Schemas
             rs.Fields[Fields.Value].Value = Value;
         }
 
-        public void LoadFromId(int id)
-        {
-            Recordset rs = Manager.FindFirst(TableName, Fields.ID, id);
+        public void Insert() => Manager.Instance.InsertInto(TableName, this);
 
-            LoadFromRecordset(rs);
+        public void Update() => Manager.Instance.Update(TableName, this);
 
-            rs.Close();
-        }
-
-        public void Insert()
-        {
-            Recordset rs = Manager.NewRecord(TableName);
-
-            Id = (int)rs.Fields[Fields.ID].Value;
-
-            FillInRecordset(rs);
-
-            rs.Update();
-            rs.Close();
-        }
-
-        public void Update()
-        {
-            Recordset rs = Manager.FindFirst(TableName, Fields.ID, Id);
-
-            rs.Edit();
-            FillInRecordset(rs);
-
-            rs.Update();
-            rs.Close();
-        }
-
-        public void Delete()
-        {
-            Recordset rs = Manager.FindFirst(TableName, Fields.ID, Id);
-
-            rs.Delete();
-
-            rs.Close();
-        }
+        public void Delete() => Manager.Instance.Delete(TableName, this);
 
         public bool Equals(Income other) => (Id == other.Id) && (Name == other.Name) && (Value == other.Value);
         public override bool Equals(object obj) => Equals(obj as Income);
