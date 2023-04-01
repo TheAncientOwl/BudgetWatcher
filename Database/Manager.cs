@@ -70,7 +70,8 @@ namespace BudgetWatcher.Database
 
         public void InsertInto<DbObject>(string tableName, DbObject dbObject) where DbObject : IDatabaseObject
         {
-            Recordset rs = NewRecord(tableName);
+            Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
+            rs.AddNew();
 
             typeof(DbObject).GetProperty(dbObject.IdProperty).SetValue(dbObject, (int)rs.Fields[dbObject.IdTableField].Value);
 
@@ -161,15 +162,6 @@ namespace BudgetWatcher.Database
                 rs.Close();
                 throw new Exception("No record with ID " + id + " matched on table " + tableName);
             }
-
-            return rs;
-        }
-
-        public static Recordset NewRecord(string tableName)
-        {
-            Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
-
-            rs.AddNew();
 
             return rs;
         }
