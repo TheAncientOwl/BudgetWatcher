@@ -5,7 +5,7 @@ using Microsoft.Office.Interop.Access.Dao;
 
 namespace BudgetWatcher.Database.Schemas
 {
-    public class Income : IDatabaseObject, IEquatable<Income>
+    public class Income : IDatabaseObject
     {
         #region Database Config
         public static readonly string TableName = "Incomes";
@@ -53,18 +53,6 @@ namespace BudgetWatcher.Database.Schemas
         public void Update() => Manager.Instance.Update(TableName, this);
 
         public void Delete() => Manager.Instance.Delete(TableName, this);
-
-        public bool Equals(Income other) => (Id == other.Id) && (Name == other.Name) && (Value == other.Value);
-        public override bool Equals(object obj) => Equals(obj as Income);
-
-        public override int GetHashCode()
-        {
-            int hashCode = -679859104;
-            hashCode = hashCode * -1521134295 + Id.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
-            hashCode = hashCode * -1521134295 + Value.GetHashCode();
-            return hashCode;
-        }
         #endregion Public API
     }
 }
