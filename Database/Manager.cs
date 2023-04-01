@@ -152,7 +152,7 @@ namespace BudgetWatcher.Database
             OnDatabaseClosed?.Invoke();
         }
 
-        public static Recordset FindFirst(string tableName, string idField, int id)
+        private Recordset FindFirst(string tableName, string idField, int id)
         {
             Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
             rs.FindFirst(idField + " = " + id);
