@@ -17,7 +17,7 @@ namespace BudgetWatcher.Forms
         {
             Income newIncome = new Income();
             IncomeForm form = new IncomeForm("Adaugă un venit nou", newIncome);
-            
+
             if (form.ShowDialog() == DialogResult.OK)
             {
                 form.FillInData(newIncome);
@@ -69,32 +69,16 @@ namespace BudgetWatcher.Forms
             }
         }
 
-        private void Button_ListIncomes_Click(object sender, EventArgs e)
+        private void Button_List_Click<ListForm>() where ListForm : Form, new()
         {
-            ListIncomesForm form = new ListIncomesForm();
+            ListForm form = new ListForm();
 
             form.ShowDialog();
         }
 
-        private void Button_ListCategories_Click(object sender, EventArgs e)
-        {
-            ListCategoriesForm form = new ListCategoriesForm();
-
-            form.ShowDialog();
-        }
-
-        private void Button_ListFrequencies_Click(object sender, EventArgs e)
-        {
-            ListFrequenciesForm form = new ListFrequenciesForm();
-
-            form.ShowDialog();
-        }
-
-        private void Button_ListExpenses_Click(object sender, EventArgs e)
-        {
-            ListExpensesForm form = new ListExpensesForm();
-
-            form.ShowDialog();
-        }
+        private void Button_ListIncomes_Click(object sender, EventArgs e) => Button_List_Click<ListIncomesForm>();
+        private void Button_ListCategories_Click(object sender, EventArgs e) => Button_List_Click<ListCategoriesForm>();
+        private void Button_ListFrequencies_Click(object sender, EventArgs e) => Button_List_Click<ListFrequenciesForm>();
+        private void Button_ListExpenses_Click(object sender, EventArgs e) => Button_List_Click<ListExpensesForm>();
     }
 }
