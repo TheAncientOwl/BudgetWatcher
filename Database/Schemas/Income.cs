@@ -29,24 +29,9 @@ namespace BudgetWatcher.Database.Schemas
         #endregion Properites
 
         #region Constructors
-        public Income(string name, double value)
-        {
-            Id = -1;
-            Name = name;
-            Value = value;
-        }
-
+        public Income(string name, double value) => (Id, Name, Value) = (-1, name, value);
         public Income() : this("Empty Income", 0) { }
-
-        public Income(int id)
-        {
-            Manager.Instance.SelectFrom(TableName, id, this);
-        }
-
-        public Income(Recordset recordSet)
-        {
-            LoadFromRecordset(recordSet);
-        }
+        public Income(int id) => Manager.Instance.SelectFrom(TableName, id, this);
         #endregion Constructors
 
         #region Public API

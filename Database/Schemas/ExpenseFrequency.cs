@@ -29,24 +29,9 @@ namespace BudgetWatcher.Database.Schemas
         #endregion Properties
 
         #region Constructors
-        public ExpenseFrequency(string name, int days)
-        {
-            Id = -1;
-            Name = name;
-            Days = days;
-        }
-
+        public ExpenseFrequency(string name, int days) => (Id, Name, Days) = (-1, name, days);
         public ExpenseFrequency() : this("Empty Frequency", 1) { }
-
-        public ExpenseFrequency(int id)
-        {
-            Manager.Instance.SelectFrom(TableName, id, this);
-        }
-
-        public ExpenseFrequency(Recordset rs)
-        {
-            LoadFromRecordset(rs);
-        }
+        public ExpenseFrequency(int id) => Manager.Instance.SelectFrom(TableName, id, this);
         #endregion Constructors
 
         #region Public API

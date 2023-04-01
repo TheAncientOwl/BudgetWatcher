@@ -29,24 +29,9 @@ namespace BudgetWatcher.Database.Schemas
         #endregion Properties
 
         #region Constructors
-        public ExpenseCategory(string name, string description)
-        {
-            Id = -1;
-            Name = name;
-            Description = description;
-        }
-
+        public ExpenseCategory(string name, string description) => (Id, Name, Description) = (-1, name, description);
         public ExpenseCategory() : this("Empty Category", "-") { }
-
-        public ExpenseCategory(int id)
-        {
-            Manager.Instance.SelectFrom(TableName, id, this);
-        }
-
-        public ExpenseCategory(Recordset rs)
-        {
-            LoadFromRecordset(rs);
-        }
+        public ExpenseCategory(int id) => Manager.Instance.SelectFrom(TableName, id, this);
         #endregion Constructors
 
         #region Public API

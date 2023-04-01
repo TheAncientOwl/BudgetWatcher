@@ -38,24 +38,12 @@ namespace BudgetWatcher.Database.Schemas
 
         #region Constructors
         public Expense(string name, double value, DateTime date, string details, int categoryId, int frequencyId)
-        {
-            Id = -1;
-
-            Name = name;
-            Value = value;
-            Date = date;
-            Details = details;
-
-            Category = categoryId == -1 ? null : new ExpenseCategory(categoryId);
-            Frequency = frequencyId == -1 ? null : new ExpenseFrequency(frequencyId);
-        }
-
+            => (Id, Name, Value, Date, Details, Category, Frequency) =
+            (-1, name, value, date, details, 
+            categoryId == -1 ? null : new ExpenseCategory(categoryId), 
+            frequencyId == -1 ? null : new ExpenseFrequency(frequencyId));
         public Expense() : this("Empty Expense", 0, DateTime.Now, "-", -1, -1) { }
-
-        public Expense(int id)
-        {
-            Manager.Instance.SelectFrom(TableName, id, this);
-        }
+        public Expense(int id) => Manager.Instance.SelectFrom(TableName, id, this);
         #endregion Constructors
 
         #region Public API
