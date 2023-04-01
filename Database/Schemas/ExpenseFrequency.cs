@@ -7,7 +7,7 @@ namespace BudgetWatcher.Database.Schemas
 {
     public class ExpenseFrequency : IDatabaseObject, IEquatable<ExpenseFrequency>
     {
-        #region Database Table Definitions
+        #region Database Config
         public static readonly string TableName = "ExpenseFrequencies";
 
         public static class Fields
@@ -16,7 +16,7 @@ namespace BudgetWatcher.Database.Schemas
             public static readonly string Name = "Name";
             public static readonly string Days = "Days";
         }
-        #endregion Database Table Definitions
+        #endregion Database Config
 
         #region Properties
         public int Id { get; private set; }

@@ -7,7 +7,7 @@ namespace BudgetWatcher.Database.Schemas
 {
     public class Expense : IDatabaseObject, IEquatable<Expense>
     {
-        #region Database Table Definitions
+        #region Database Config
         public static readonly string TableName = "Expenses";
 
         public static class Fields
@@ -20,7 +20,7 @@ namespace BudgetWatcher.Database.Schemas
             public static readonly string FrequencyId = "FrequencyId";
             public static readonly string Details = "Details";
         }
-        #endregion Database Table Definitions
+        #endregion Database Config
 
         #region Properties
         public int Id { get; private set; }
