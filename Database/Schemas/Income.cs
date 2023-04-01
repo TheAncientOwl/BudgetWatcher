@@ -80,33 +80,6 @@ namespace BudgetWatcher.Database.Schemas
         #endregion Constructors
 
         #region Public API
-        public static List<Income> FetchAll()
-        {
-            List<Income> incomes = new List<Income>();
-
-            var idProperty = typeof(Income).GetProperty("Id");
-
-            Recordset rs = Manager.DbInstance.OpenRecordset(TableName, RecordsetTypeEnum.dbOpenDynaset);
-
-            while (!rs.EOF)
-            {
-                Income income = new Income();
-                income.Name = (string)rs.Fields[Fields.Name].Value;
-                income.Value = (double)rs.Fields[Fields.Value].Value;
-
-                int id = (int)rs.Fields[Fields.ID].Value;
-                idProperty.SetValue(income, id);
-
-                incomes.Add(income);
-
-                rs.MoveNext();
-            }
-
-            rs.Close();
-
-            return incomes;
-        }
-
         public void LoadFromRecordset(Recordset rs)
         {
             Id = (int)rs.Fields[Fields.ID].Value;

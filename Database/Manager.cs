@@ -38,12 +38,28 @@ namespace BudgetWatcher.Database
         #endregion
 
         #region Public API
-        public List<T> FetchAll<T>() where T : IDatabaseObject
+        public List<DbObject> SelectAll<DbObject>(string tableName) where DbObject : IDatabaseObject, new()
         {
-            return null;
+            List<DbObject> dbObjects = new List<DbObject>();
+
+            Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
+            
+            while (!rs.EOF)
+            {
+                DbObject dbObject = new DbObject();
+                dbObject.LoadFromRecordset(rs);
+
+                dbObjects.Add(dbObject);
+
+                rs.MoveNext();
+            }
+
+            rs.Close();
+
+            return dbObjects;
         }
 
-        public void SelectFrom<T>(string tableName, int id, T dbObject) where T : IDatabaseObject
+        public void SelectFrom<DbObject>(string tableName, int id, DbObject dbObject) where DbObject : IDatabaseObject
         {
             Recordset rs = FindFirst(tableName, dbObject.IdTableField, id);
 
@@ -52,11 +68,11 @@ namespace BudgetWatcher.Database
             rs.Close();
         }
 
-        public void InsertInto<T>(string tableName, T dbObject) where T : IDatabaseObject
+        public void InsertInto<DbObject>(string tableName, DbObject dbObject) where DbObject : IDatabaseObject
         {
             Recordset rs = NewRecord(tableName);
 
-            typeof(T).GetProperty(dbObject.IdProperty).SetValue(dbObject, (int)rs.Fields[dbObject.IdTableField].Value);
+            typeof(DbObject).GetProperty(dbObject.IdProperty).SetValue(dbObject, (int)rs.Fields[dbObject.IdTableField].Value);
 
             dbObject.FillInRecordset(rs);
 
@@ -64,7 +80,7 @@ namespace BudgetWatcher.Database
             rs.Close();
         }
 
-        public void Update<T>(string tableName, T dbObject) where T : IDatabaseObject
+        public void Update<DbObject>(string tableName, DbObject dbObject) where DbObject : IDatabaseObject
         {
             Recordset rs = FindFirst(tableName, dbObject.IdTableField, dbObject.ID);
 
@@ -75,7 +91,7 @@ namespace BudgetWatcher.Database
             rs.Close();
         }
 
-        public void Delete<T>(string tableName, T dbObject) where T : IDatabaseObject
+        public void Delete<DbObject>(string tableName, DbObject dbObject) where DbObject : IDatabaseObject
         {
             Recordset rs = FindFirst(tableName, dbObject.IdTableField, dbObject.ID);
 

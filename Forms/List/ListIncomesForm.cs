@@ -1,19 +1,21 @@
-﻿using BudgetWatcher.Database.Schemas;
-using BudgetWatcher.Forms.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
+
+using BudgetWatcher.Database;
+using BudgetWatcher.Database.Schemas;
+using BudgetWatcher.Forms.Data;
 
 namespace BudgetWatcher.Forms.List
 {
     public partial class ListIncomesForm : Form
     {
-        List<Income> m_Incomes = null;
+        readonly List<Income> m_Incomes = null;
 
         public ListIncomesForm()
         {
             InitializeComponent();
 
-            m_Incomes = Income.FetchAll();
+            m_Incomes = Manager.Instance.SelectAll<Income>(Income.TableName);
 
             foreach (var income in m_Incomes)
             {
