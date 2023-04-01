@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Microsoft.Office.Interop.Access.Dao;
 
 namespace BudgetWatcher.Database.Schemas
 {
-    public class Expense : IDatabaseObject, IEquatable<Expense>
+    public class Expense : IDatabaseObject
     {
         #region Database Config
         public static readonly string TableName = "Expenses";
@@ -73,25 +72,6 @@ namespace BudgetWatcher.Database.Schemas
         public void Update() => Manager.Instance.Update(TableName, this);
 
         public void Delete() => Manager.Instance.Delete(TableName, this);
-
-        public bool Equals(Expense other) =>
-            (Id == other.Id) && (Name == other.Name) && (Value == other.Value) && (Details == other.Details) &&
-            (Date.Day == other.Date.Day) && (Date.Month == other.Date.Month) && (Date.Year == other.Date.Year) &&
-            (Category.Equals(other.Category)) && (Frequency.Equals(other.Frequency));
-        public override bool Equals(object obj) => Equals(obj as Expense);
-
-        public override int GetHashCode()
-        {
-            int hashCode = 1342306499;
-            hashCode = hashCode * -1521134295 + Id.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
-            hashCode = hashCode * -1521134295 + Value.GetHashCode();
-            hashCode = hashCode * -1521134295 + Date.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Details);
-            hashCode = hashCode * -1521134295 + EqualityComparer<ExpenseCategory>.Default.GetHashCode(Category);
-            hashCode = hashCode * -1521134295 + EqualityComparer<ExpenseFrequency>.Default.GetHashCode(Frequency);
-            return hashCode;
-        }
         #endregion Public API
     }
 }

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Microsoft.Office.Interop.Access.Dao;
+﻿using Microsoft.Office.Interop.Access.Dao;
 
 namespace BudgetWatcher.Database.Schemas
 {
-    public class ExpenseCategory : IDatabaseObject, IEquatable<ExpenseCategory>
+    public class ExpenseCategory : IDatabaseObject
     {
         #region Database Config
         public static readonly string TableName = "ExpenseCategories";
@@ -53,18 +50,6 @@ namespace BudgetWatcher.Database.Schemas
         public void Update() => Manager.Instance.Update(TableName, this);
 
         public void Delete() => Manager.Instance.Delete(TableName, this);
-
-        public bool Equals(ExpenseCategory other) => (Id == other.Id) && (Name == other.Name) && (Description == other.Description);
-        public override bool Equals(object obj) => Equals(obj as ExpenseCategory);
-
-        public override int GetHashCode()
-        {
-            int hashCode = 1829809407;
-            hashCode = hashCode * -1521134295 + Id.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Description);
-            return hashCode;
-        }
         #endregion Public API
     }
 }
