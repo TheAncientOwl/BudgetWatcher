@@ -38,15 +38,20 @@ namespace BudgetWatcher.Database
         #endregion
 
         #region Public API
+        public List<T> FetchAll<T>() where T : IDatabaseObject
+        {
+            return null;
+        }
+
         public List<Tuple<int, string>> PeekCategories()
         {
             List<Tuple<int, string>> categories = new List<Tuple<int, string>>();
 
             Recordset rs = DbInstance.OpenRecordset(ExpenseCategory.TableName, RecordsetTypeEnum.dbOpenDynaset);
 
-            while(!rs.EOF)
+            while (!rs.EOF)
             {
-                categories.Add(new Tuple<int, string>(rs.Fields[ExpenseCategory.Fields.ID].Value, 
+                categories.Add(new Tuple<int, string>(rs.Fields[ExpenseCategory.Fields.ID].Value,
                                                       rs.Fields[ExpenseCategory.Fields.Name].Value));
 
                 rs.MoveNext();

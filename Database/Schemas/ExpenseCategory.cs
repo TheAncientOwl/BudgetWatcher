@@ -67,6 +67,11 @@ namespace BudgetWatcher.Database.Schemas
         {
             LoadFromId(id);
         }
+
+        public ExpenseCategory(Recordset rs)
+        {
+            LoadFromRecordset(rs);
+        }
         #endregion Constructors
 
         #region Public API
@@ -97,13 +102,24 @@ namespace BudgetWatcher.Database.Schemas
             return categories;
         }
 
+        public void LoadFromRecordset(Recordset rs)
+        {
+            Id = (int)rs.Fields[Fields.ID].Value;
+            Name = (string)rs.Fields[Fields.Name].Value;
+            Description = (string)rs.Fields[Fields.Description].Value;
+        }
+
+        public void FillInRecordset(Recordset rs)
+        {
+            rs.Fields[Fields.Name].Value = Name;
+            rs.Fields[Fields.Description].Value = Description;
+        }
+
         public void LoadFromId(int id)
         {
             Recordset rs = Manager.FindFirst(TableName, Fields.ID, id);
 
-            Id = (int)rs.Fields[Fields.ID].Value;
-            Name = (string)rs.Fields[Fields.Name].Value;
-            Description = (string)rs.Fields[Fields.Description].Value;
+            LoadFromRecordset(rs);
 
             rs.Close();
         }
@@ -114,8 +130,7 @@ namespace BudgetWatcher.Database.Schemas
 
             Id = (int)rs.Fields[Fields.ID].Value;
 
-            rs.Fields[Fields.Name].Value = Name;
-            rs.Fields[Fields.Description].Value = Description;
+            FillInRecordset(rs);
 
             rs.Update();
             rs.Close();
@@ -126,8 +141,7 @@ namespace BudgetWatcher.Database.Schemas
             Recordset rs = Manager.FindFirst(TableName, Fields.ID, Id);
 
             rs.Edit();
-            rs.Fields[Fields.Name].Value = Name;
-            rs.Fields[Fields.Description].Value = Description;
+            FillInRecordset(rs);
 
             rs.Update();
             rs.Close();
@@ -153,7 +167,6 @@ namespace BudgetWatcher.Database.Schemas
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Description);
             return hashCode;
         }
-
         #endregion Public API
     }
 }

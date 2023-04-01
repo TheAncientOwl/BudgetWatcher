@@ -154,10 +154,8 @@ namespace BudgetWatcher.Database.Schemas
             return expenses;
         }
 
-        public void LoadFromId(int id)
+        public void LoadFromRecordset(Recordset rs)
         {
-            Recordset rs = Manager.FindFirst(TableName, Fields.ID, id);
-
             Id = (int)rs.Fields[Fields.ID].Value;
             Name = (string)rs.Fields[Fields.Name].Value;
             Value = (double)rs.Fields[Fields.Value].Value;
@@ -165,6 +163,23 @@ namespace BudgetWatcher.Database.Schemas
             Details = (string)rs.Fields[Fields.Details].Value;
             Category = new ExpenseCategory((int)rs.Fields[Fields.CategoryId].Value);
             Frequency = new ExpenseFrequency((int)rs.Fields[Fields.FrequencyId].Value);
+        }
+
+        public void FillInRecordset(Recordset rs)
+        {
+            rs.Fields[Fields.Name].Value = Name;
+            rs.Fields[Fields.Value].Value = Value;
+            rs.Fields[Fields.Date].Value = Date;
+            rs.Fields[Fields.Details].Value = Details;
+            rs.Fields[Fields.CategoryId].Value = Category.Id;
+            rs.Fields[Fields.FrequencyId].Value = Frequency.Id;
+        }
+
+        public void LoadFromId(int id)
+        {
+            Recordset rs = Manager.FindFirst(TableName, Fields.ID, id);
+
+            LoadFromRecordset(rs);
 
             rs.Close();
         }
@@ -175,12 +190,7 @@ namespace BudgetWatcher.Database.Schemas
 
             Id = (int)rs.Fields[Fields.ID].Value;
 
-            rs.Fields[Fields.Name].Value = Name;
-            rs.Fields[Fields.Value].Value = Value;
-            rs.Fields[Fields.Date].Value = Date;
-            rs.Fields[Fields.Details].Value = Details;
-            rs.Fields[Fields.CategoryId].Value = Category.Id;
-            rs.Fields[Fields.FrequencyId].Value = Frequency.Id;
+            FillInRecordset(rs);
 
             rs.Update();
             rs.Close();
@@ -191,12 +201,7 @@ namespace BudgetWatcher.Database.Schemas
             Recordset rs = Manager.FindFirst(TableName, Fields.ID, Id);
 
             rs.Edit();
-            rs.Fields[Fields.Name].Value = Name;
-            rs.Fields[Fields.Value].Value = Value;
-            rs.Fields[Fields.Date].Value = Date;
-            rs.Fields[Fields.Details].Value = Details;
-            rs.Fields[Fields.CategoryId].Value = Category.Id;
-            rs.Fields[Fields.FrequencyId].Value = Frequency.Id;
+            FillInRecordset(rs);
 
             rs.Update();
             rs.Close();

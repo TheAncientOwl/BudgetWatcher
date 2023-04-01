@@ -68,6 +68,11 @@ namespace BudgetWatcher.Database.Schemas
         {
             LoadFromId(id);
         }
+
+        public Income(Recordset recordSet)
+        {
+            LoadFromRecordset(recordSet);
+        }
         #endregion Constructors
 
         #region Public API
@@ -98,13 +103,24 @@ namespace BudgetWatcher.Database.Schemas
             return incomes;
         }
 
+        public void LoadFromRecordset(Recordset rs)
+        {
+            Id = (int)rs.Fields[Fields.ID].Value;
+            Name = (string)rs.Fields[Fields.Name].Value;
+            Value = (double)rs.Fields[Fields.Value].Value;
+        }
+
+        public void FillInRecordset(Recordset rs)
+        {
+            rs.Fields[Fields.Name].Value = Name;
+            rs.Fields[Fields.Value].Value = Value;
+        }
+
         public void LoadFromId(int id)
         {
             Recordset rs = Manager.FindFirst(TableName, Fields.ID, id);
 
-            Id = (int)rs.Fields[Fields.ID].Value;
-            Name = (string)rs.Fields[Fields.Name].Value;
-            Value = (double)rs.Fields[Fields.Value].Value;
+            LoadFromRecordset(rs);
 
             rs.Close();
         }
@@ -115,8 +131,7 @@ namespace BudgetWatcher.Database.Schemas
 
             Id = (int)rs.Fields[Fields.ID].Value;
 
-            rs.Fields[Fields.Name].Value = Name;
-            rs.Fields[Fields.Value].Value = Value;
+            FillInRecordset(rs);
 
             rs.Update();
             rs.Close();
@@ -127,8 +142,7 @@ namespace BudgetWatcher.Database.Schemas
             Recordset rs = Manager.FindFirst(TableName, Fields.ID, Id);
 
             rs.Edit();
-            rs.Fields[Fields.Name].Value = Name;
-            rs.Fields[Fields.Value].Value = Value;
+            FillInRecordset(rs);
 
             rs.Update();
             rs.Close();
