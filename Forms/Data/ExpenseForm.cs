@@ -7,12 +7,12 @@ using BudgetWatcher.Database.Schemas;
 
 namespace BudgetWatcher.Forms.Data
 {
-    public partial class ExpenseForm : Form
+    public partial class ExpenseForm : Form, IDatabaseObjectFiller<Expense>, ISetDefaultFormProperties<Expense>
     {
         readonly List<Tuple<int, string>> m_Categories;
         readonly List<Tuple<int, string>> m_Frequencies;
 
-        public ExpenseForm(string formTitle, Expense defaultExpense)
+        public ExpenseForm()
         {
             InitializeComponent();
 
@@ -30,19 +30,7 @@ namespace BudgetWatcher.Forms.Data
                 FrequencyComboBox.Items.Add(frequencies.Item2);
             }
 
-            // fill in defaults
-            Text = formTitle;
-
-            NameTextBox.Text = defaultExpense.Name;
-            ValueUpDown.Value = (decimal)defaultExpense.Value;
-            DateTimePicker.Value = defaultExpense.Date;
-            DetailsTextBox.Text = defaultExpense.Details;
-
-            FrequencyComboBox.SelectedIndex = defaultExpense.Frequency == null ? -1 : m_Frequencies.FindIndex(
-                (frequency) => frequency.Item1 == defaultExpense.Frequency.Id);
-
-            CategoryComboBox.SelectedIndex = defaultExpense.Category == null ? -1 : m_Categories.FindIndex(
-                (category) => category.Item1 == defaultExpense.Category.Id);
+            DateTimePicker.Value = DateTime.Now;
         }
 
         public void FillInData(Expense expense)
@@ -55,16 +43,20 @@ namespace BudgetWatcher.Forms.Data
             expense.Category = new ExpenseCategory(m_Categories[CategoryComboBox.SelectedIndex].Item1);
         }
 
-        public string NameData { get => NameTextBox.Text; }
-        public double ValueData { get => (double)ValueUpDown.Value; }
-        public DateTime DateData { get => DateTimePicker.Value; }
-        public string DetailsData { get => DetailsTextBox.Text.Length == 0 ? "-" : DetailsTextBox.Text; }
-        public int FrequencyIdData { get => m_Frequencies[FrequencyComboBox.SelectedIndex].Item1; }
-        public int CategoryIdData { get => m_Categories[CategoryComboBox.SelectedIndex].Item1; }
-
-        private void AddNewExpenseForm_Load(object sender, EventArgs e)
+        public void SetDefaultFormProperties(string formTitle, Expense defaultExpense)
         {
-            DateTimePicker.Value = DateTime.Now;
+            Text = formTitle;
+
+            NameTextBox.Text = defaultExpense.Name;
+            ValueUpDown.Value = (decimal)defaultExpense.Value;
+            DateTimePicker.Value = defaultExpense.Date;
+            DetailsTextBox.Text = defaultExpense.Details;
+
+            FrequencyComboBox.SelectedIndex = defaultExpense.Frequency == null ? -1 : m_Frequencies.FindIndex(
+                (frequency) => frequency.Item1 == defaultExpense.Frequency.Id);
+
+            CategoryComboBox.SelectedIndex = defaultExpense.Category == null ? -1 : m_Categories.FindIndex(
+                (category) => category.Item1 == defaultExpense.Category.Id);
         }
 
         private void HandleButtonOkEnabledState()

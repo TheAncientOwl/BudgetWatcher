@@ -32,7 +32,8 @@ namespace BudgetWatcher.Forms.List
             {
                 Expense currentExpense = m_Expenses[e.RowIndex];
 
-                ExpenseForm form = new ExpenseForm("Modifică cheltuiala", currentExpense);
+                ExpenseForm form = new ExpenseForm();
+                form.SetDefaultFormProperties("Modifică cheltuiala", currentExpense);
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {

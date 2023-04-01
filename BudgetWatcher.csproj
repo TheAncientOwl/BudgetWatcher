@@ -82,6 +82,7 @@
     <Compile Include="Database\Schemas\Expense.cs" />
     <Compile Include="Database\Schemas\ExpenseCategory.cs" />
     <Compile Include="Database\Schemas\ExpenseFrequency.cs" />
+    <Compile Include="Database\Schemas\IDatabaseObjectFiller.cs" />
     <Compile Include="Database\Schemas\Income.cs" />
     <Compile Include="Forms\Data\CategoryForm.cs">
       <SubType>Form</SubType>
@@ -107,6 +108,7 @@
     <Compile Include="Forms\Data\IncomeForm.Designer.cs">
       <DependentUpon>IncomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Data\ISetDefaultFormProperties.cs" />
     <Compile Include="Forms\Feedback\LoadingScreenForm.cs">
       <SubType>Form</SubType>
     </Compile>

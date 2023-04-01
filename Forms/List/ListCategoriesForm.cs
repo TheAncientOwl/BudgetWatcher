@@ -31,7 +31,8 @@ namespace BudgetWatcher.Forms.List
             {
                 ExpenseCategory currentCateogry = m_Categories[e.RowIndex];
 
-                CategoryForm form = new CategoryForm("Modifică categoria", currentCateogry);
+                CategoryForm form = new CategoryForm();
+                form.SetDefaultFormProperties("Modifică categoria", currentCateogry);
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {

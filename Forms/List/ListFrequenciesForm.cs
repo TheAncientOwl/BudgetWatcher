@@ -32,7 +32,8 @@ namespace BudgetWatcher.Forms.List
             {
                 ExpenseFrequency currentFrequency = m_Frequencies[e.RowIndex];
 
-                FrequencyForm form = new FrequencyForm("Modifică frecvența", currentFrequency);
+                FrequencyForm form = new FrequencyForm();
+                form.SetDefaultFormProperties("Modifică frecvența", currentFrequency);
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {

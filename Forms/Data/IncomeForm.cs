@@ -5,22 +5,25 @@ using BudgetWatcher.Database.Schemas;
 
 namespace BudgetWatcher.Forms.Data
 {
-    public partial class IncomeForm : Form
+    public partial class IncomeForm : Form, IDatabaseObjectFiller<Income>, ISetDefaultFormProperties<Income>
     {
-        public IncomeForm(string formTitle, Income defaultIncome)
+        public IncomeForm()
         {
             InitializeComponent();
-
-            Text = formTitle;
-
-            NameTextBox.Text = defaultIncome.Name;
-            ValueUpDown.Value = (decimal)defaultIncome.Value;
         }
 
         public void FillInData(Income income)
         {
             income.Name = NameTextBox.Text;
             income.Value = (double)ValueUpDown.Value;
+        }
+
+        public void SetDefaultFormProperties(string formTitle, Income defaultIncome)
+        {
+            Text = formTitle;
+
+            NameTextBox.Text = defaultIncome.Name;
+            ValueUpDown.Value = (decimal)defaultIncome.Value;
         }
 
         private void NameTextBox_TextChanged(object sender, EventArgs e)

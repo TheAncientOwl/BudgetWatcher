@@ -33,7 +33,8 @@ namespace BudgetWatcher.Forms.List
             {
                 Income currentIncome = m_Incomes[e.RowIndex];
 
-                IncomeForm form = new IncomeForm("Modifică venitul", currentIncome);
+                IncomeForm form = new IncomeForm();
+                form.SetDefaultFormProperties("Modifică venitul", currentIncome);
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {

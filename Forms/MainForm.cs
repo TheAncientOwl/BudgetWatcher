@@ -13,62 +13,39 @@ namespace BudgetWatcher.Forms
             InitializeComponent();
         }
 
-        private void Button_OpenAddIncomeForm_Click(object sender, EventArgs e)
+        #region Open Add Forms Button Click
+        private void Button_OpenAddForm_Click<DbObject, DataForm>(string formTitle, string successMessage)
+            where DbObject : IDatabaseObject, new()
+            where DataForm : Form, IDatabaseObjectFiller<DbObject>, ISetDefaultFormProperties<DbObject>, new()
         {
-            Income newIncome = new Income();
-            IncomeForm form = new IncomeForm("Adaugă un venit nou", newIncome);
+            DbObject newDbObject = new DbObject();
+            DataForm form = new DataForm();
+
+            form.SetDefaultFormProperties(formTitle, newDbObject);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                form.FillInData(newIncome);
-                newIncome.Insert();
+                form.FillInData(newDbObject);
+                newDbObject.Insert();
 
-                Utils.ShowInfoMessageBox("Venit adăugat cu succes!");
+                Utils.ShowInfoMessageBox(successMessage);
             }
         }
+
+        private void Button_OpenAddIncomeForm_Click(object sender, EventArgs e)
+            => Button_OpenAddForm_Click<Income, IncomeForm>("Adaugă un venit nou", "Venit adăugat cu succes!");
 
         private void Button_OpenAddNewCategoryForm_Click(object sender, EventArgs e)
-        {
-            ExpenseCategory newCategory = new ExpenseCategory();
-            CategoryForm form = new CategoryForm("Adăugați o categorie nouă", newCategory);
-
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                form.FillInData(newCategory);
-                newCategory.Insert();
-
-                Utils.ShowInfoMessageBox("Categorie adăugată cu succes!");
-            }
-        }
+            => Button_OpenAddForm_Click<ExpenseCategory, CategoryForm>("Adăugați o categorie nouă", "Categorie adăugată cu succes!");
 
         private void Button_OpenAddNewFrequencyForm_Click(object sender, EventArgs e)
-        {
-            ExpenseFrequency newFrequency = new ExpenseFrequency();
-            FrequencyForm form = new FrequencyForm("Adăugați o frecvență nouă", newFrequency);
-
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                form.FillInData(newFrequency);
-                newFrequency.Insert();
-
-                Utils.ShowInfoMessageBox("Frecvență adăugată cu succes!");
-            }
-        }
+            => Button_OpenAddForm_Click<ExpenseFrequency, FrequencyForm>("Adăugați o frecvență nouă", "Frecvență adăugată cu succes!");
 
         private void Button_OpenAddNewExpenseForm_Click(object sender, EventArgs e)
-        {
-            Expense newExpense = new Expense();
-            ExpenseForm form = new ExpenseForm("Adăugați o cheltuială nouă", newExpense);
+            => Button_OpenAddForm_Click<Expense, ExpenseForm>("Adăugați o cheltuială nouă", "Cheltuială adăugată cu succes!");
+        #endregion Open Add Forms Button Click
 
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                form.FillInData(newExpense);
-                newExpense.Insert();
-
-                Utils.ShowInfoMessageBox("Cheltuială adăugată cu succes!");
-            }
-        }
-
+        #region List Button Click
         private void Button_List_Click<ListForm>() where ListForm : Form, new()
         {
             ListForm form = new ListForm();
@@ -80,5 +57,6 @@ namespace BudgetWatcher.Forms
         private void Button_ListCategories_Click(object sender, EventArgs e) => Button_List_Click<ListCategoriesForm>();
         private void Button_ListFrequencies_Click(object sender, EventArgs e) => Button_List_Click<ListFrequenciesForm>();
         private void Button_ListExpenses_Click(object sender, EventArgs e) => Button_List_Click<ListExpensesForm>();
+        #endregion List Button Click
     }
 }
