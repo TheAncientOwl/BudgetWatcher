@@ -19,11 +19,12 @@ namespace BudgetWatcher.Forms.List
 
             foreach (var expense in m_Expenses)
             {
-                ExpensesGridView.Rows.Add("modifică", expense.Id, expense.Name, expense.Value, expense.Date, expense.Details, expense.Category.Name, expense.Frequency.Name);
+                ExpensesGridView.Rows.Add("modifică", expense.Id, expense.Name, expense.Value, expense.Date.ToShortDateString(), expense.Category.Name, expense.Frequency.Name, expense.Details);
             }
 
             ExpensesGridView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             ExpensesGridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            ExpensesGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void ExpensesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -44,10 +45,10 @@ namespace BudgetWatcher.Forms.List
                     cells[1].Value = currentExpense.Id;
                     cells[2].Value = currentExpense.Name;
                     cells[3].Value = currentExpense.Value;
-                    cells[4].Value = currentExpense.Date;
-                    cells[5].Value = currentExpense.Details;
-                    cells[6].Value = currentExpense.Category.Name;
-                    cells[7].Value = currentExpense.Frequency.Name;
+                    cells[4].Value = currentExpense.Date.ToShortDateString();
+                    cells[5].Value = currentExpense.Category.Name;
+                    cells[6].Value = currentExpense.Frequency.Name;
+                    cells[7].Value = currentExpense.Details;
 
                     Utils.ShowInfoMessageBox("Cheltuială modificată cu succes!");
                 }

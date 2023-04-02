@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ExpensesGridView = new System.Windows.Forms.DataGridView();
             this.EditButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ExpensesGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,6 +47,14 @@
             this.ExpensesGridView.AllowUserToDeleteRows = false;
             this.ExpensesGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.ExpensesGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ExpensesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ExpensesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ExpensesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EditButton,
@@ -53,88 +62,95 @@
             this.Name_,
             this.Value,
             this.Date,
-            this.Description,
             this.Category,
-            this.Frequency});
+            this.Frequency,
+            this.Description});
             this.ExpensesGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ExpensesGridView.Location = new System.Drawing.Point(0, 0);
             this.ExpensesGridView.Name = "ExpensesGridView";
             this.ExpensesGridView.ReadOnly = true;
             this.ExpensesGridView.RowHeadersWidth = 51;
             this.ExpensesGridView.RowTemplate.Height = 24;
-            this.ExpensesGridView.Size = new System.Drawing.Size(1435, 450);
+            this.ExpensesGridView.Size = new System.Drawing.Size(1057, 450);
             this.ExpensesGridView.TabIndex = 2;
             this.ExpensesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExpensesGridView_CellContentClick);
             // 
             // EditButton
             // 
+            this.EditButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.EditButton.HeaderText = "Modifică";
             this.EditButton.MinimumWidth = 6;
             this.EditButton.Name = "EditButton";
             this.EditButton.ReadOnly = true;
-            this.EditButton.Width = 55;
+            this.EditButton.Width = 75;
             // 
             // ID
             // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ID.HeaderText = "ID";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 55;
+            this.ID.Width = 60;
             // 
             // Name_
             // 
+            this.Name_.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Name_.FillWeight = 60F;
             this.Name_.HeaderText = "Denumire";
             this.Name_.MinimumWidth = 6;
             this.Name_.Name = "Name_";
             this.Name_.ReadOnly = true;
-            this.Name_.Width = 150;
             // 
             // Value
             // 
+            this.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Value.FillWeight = 30F;
             this.Value.HeaderText = "Valoare";
             this.Value.MinimumWidth = 6;
             this.Value.Name = "Value";
             this.Value.ReadOnly = true;
-            this.Value.Width = 125;
             // 
             // Date
             // 
+            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Date.FillWeight = 30F;
             this.Date.HeaderText = "Dată";
             this.Date.MinimumWidth = 6;
             this.Date.Name = "Date";
             this.Date.ReadOnly = true;
-            this.Date.Width = 180;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Descriere";
-            this.Description.MinimumWidth = 6;
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 180;
             // 
             // Category
             // 
+            this.Category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Category.FillWeight = 40F;
             this.Category.HeaderText = "Categorie";
             this.Category.MinimumWidth = 6;
             this.Category.Name = "Category";
             this.Category.ReadOnly = true;
-            this.Category.Width = 125;
             // 
             // Frequency
             // 
+            this.Frequency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Frequency.FillWeight = 40F;
             this.Frequency.HeaderText = "Frecvență";
             this.Frequency.MinimumWidth = 6;
             this.Frequency.Name = "Frequency";
             this.Frequency.ReadOnly = true;
-            this.Frequency.Width = 125;
+            // 
+            // Description
+            // 
+            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Description.HeaderText = "Descriere";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
             // 
             // ListExpensesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1435, 450);
+            this.ClientSize = new System.Drawing.Size(1057, 450);
             this.Controls.Add(this.ExpensesGridView);
             this.Name = "ListExpensesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -152,8 +168,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
     }
 }

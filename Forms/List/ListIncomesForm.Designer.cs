@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.IncomesGridView = new System.Windows.Forms.DataGridView();
             this.EditButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +43,14 @@
             this.IncomesGridView.AllowUserToDeleteRows = false;
             this.IncomesGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.IncomesGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.IncomesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.IncomesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.IncomesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EditButton,
@@ -49,55 +58,58 @@
             this.Name_,
             this.Value});
             this.IncomesGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.IncomesGridView.Location = new System.Drawing.Point(15, 15);
+            this.IncomesGridView.Location = new System.Drawing.Point(0, 0);
             this.IncomesGridView.Name = "IncomesGridView";
             this.IncomesGridView.ReadOnly = true;
             this.IncomesGridView.RowHeadersWidth = 51;
             this.IncomesGridView.RowTemplate.Height = 24;
-            this.IncomesGridView.Size = new System.Drawing.Size(621, 298);
+            this.IncomesGridView.Size = new System.Drawing.Size(658, 411);
             this.IncomesGridView.TabIndex = 0;
             this.IncomesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.IncomesGridView_CellContentClick);
             // 
             // EditButton
             // 
+            this.EditButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.EditButton.HeaderText = "Modifică";
             this.EditButton.MinimumWidth = 6;
             this.EditButton.Name = "EditButton";
             this.EditButton.ReadOnly = true;
-            this.EditButton.Width = 55;
+            this.EditButton.Width = 75;
             // 
             // ID
             // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ID.HeaderText = "ID";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 55;
+            this.ID.Width = 60;
             // 
             // Name_
             // 
+            this.Name_.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Name_.FillWeight = 60F;
             this.Name_.HeaderText = "Denumire";
             this.Name_.MinimumWidth = 6;
             this.Name_.Name = "Name_";
             this.Name_.ReadOnly = true;
-            this.Name_.Width = 150;
             // 
             // Value
             // 
+            this.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Value.FillWeight = 40F;
             this.Value.HeaderText = "Valoare";
             this.Value.MinimumWidth = 6;
             this.Value.Name = "Value";
             this.Value.ReadOnly = true;
-            this.Value.Width = 115;
             // 
             // ListIncomesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 328);
+            this.ClientSize = new System.Drawing.Size(658, 411);
             this.Controls.Add(this.IncomesGridView);
             this.Name = "ListIncomesForm";
-            this.Padding = new System.Windows.Forms.Padding(15);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venituri";
             ((System.ComponentModel.ISupportInitialize)(this.IncomesGridView)).EndInit();
