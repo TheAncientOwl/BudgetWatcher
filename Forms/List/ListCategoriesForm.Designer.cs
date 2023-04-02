@@ -97,6 +97,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.CategoriesGridView);
             this.Name = "ListCategoriesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Categorii de cheltuieli";
             ((System.ComponentModel.ISupportInitialize)(this.CategoriesGridView)).EndInit();
             this.ResumeLayout(false);

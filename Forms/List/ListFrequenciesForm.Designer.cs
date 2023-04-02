@@ -88,6 +88,7 @@
             this.Days.MinimumWidth = 6;
             this.Days.Name = "Days";
             this.Days.ReadOnly = true;
+            this.Days.Width = 125;
             // 
             // ListFrequenciesForm
             // 
@@ -96,6 +97,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.FrequenciesGridView);
             this.Name = "ListFrequenciesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frecvențe de cheltuieli";
             ((System.ComponentModel.ISupportInitialize)(this.FrequenciesGridView)).EndInit();
             this.ResumeLayout(false);

@@ -118,6 +118,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "IncomeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venit";
             ((System.ComponentModel.ISupportInitialize)(this.ValueUpDown)).EndInit();
             this.ResumeLayout(false);

@@ -98,6 +98,7 @@
             this.Controls.Add(this.IncomesGridView);
             this.Name = "ListIncomesForm";
             this.Padding = new System.Windows.Forms.Padding(15);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venituri";
             ((System.ComponentModel.ISupportInitialize)(this.IncomesGridView)).EndInit();
             this.ResumeLayout(false);

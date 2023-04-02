@@ -137,6 +137,7 @@
             this.ClientSize = new System.Drawing.Size(1435, 450);
             this.Controls.Add(this.ExpensesGridView);
             this.Name = "ListExpensesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cheltuieli";
             ((System.ComponentModel.ISupportInitialize)(this.ExpensesGridView)).EndInit();
             this.ResumeLayout(false);

@@ -184,7 +184,7 @@
             this.DetailsTextBox.Size = new System.Drawing.Size(196, 294);
             this.DetailsTextBox.TabIndex = 19;
             // 
-            // AddNewExpenseForm
+            // ExpenseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -205,8 +205,9 @@
             this.Controls.Add(this.Button_Ok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "AddNewExpenseForm";
+            this.Name = "ExpenseForm";
             this.Padding = new System.Windows.Forms.Padding(1);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adaugă o cheltuială nouă";
             ((System.ComponentModel.ISupportInitialize)(this.ValueUpDown)).EndInit();
             this.ResumeLayout(false);

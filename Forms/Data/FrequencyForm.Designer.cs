@@ -122,6 +122,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrequencyForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frecvență";
             ((System.ComponentModel.ISupportInitialize)(this.DaysUpDown)).EndInit();
             this.ResumeLayout(false);
