@@ -26,12 +26,11 @@ namespace BudgetWatcher
             Database.Manager.Instance.OpenOrCreateDatabase();
         }
 
-        public static void TerminateApp(Object sender, FormClosingEventArgs e)
+        public static void TerminateApp(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                if (MessageBox.Show("Sigur doriți să închideți aplicația?", "BudgetWatcher - Confirmă închiderea aplicației",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                if (Utils.ShowQuestionBox("Sigur doriți să închideți aplicația?") == DialogResult.No)
                 {
                     e.Cancel = true;
                 }
