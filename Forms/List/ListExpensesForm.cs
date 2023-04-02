@@ -57,9 +57,12 @@ namespace BudgetWatcher.Forms.List
                     }
                     return;
                 case 1:
-                    currentExpense.Delete();
-                    m_Expenses.RemoveAt(e.RowIndex);
-                    ExpensesGridView.Rows.RemoveAt(e.RowIndex);
+                    if (Utils.ShowQuestionBox("Sigur doriți să ștergeți cheltuiala?") == DialogResult.Yes)
+                    {
+                        currentExpense.Delete();
+                        m_Expenses.RemoveAt(e.RowIndex);
+                        ExpensesGridView.Rows.RemoveAt(e.RowIndex);
+                    }
                     return;
             }
         }

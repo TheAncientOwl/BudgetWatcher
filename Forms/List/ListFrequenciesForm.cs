@@ -52,9 +52,12 @@ namespace BudgetWatcher.Forms.List
                     }
                     return;
                 case 1:
-                    currentFrequency.Delete();
-                    m_Frequencies.RemoveAt(e.RowIndex);
-                    FrequenciesGridView.Rows.RemoveAt(e.RowIndex);
+                    if (Utils.ShowQuestionBox("Sigur doriți să ștergeți frecvența?") == DialogResult.Yes)
+                    {
+                        currentFrequency.Delete();
+                        m_Frequencies.RemoveAt(e.RowIndex);
+                        FrequenciesGridView.Rows.RemoveAt(e.RowIndex);
+                    }
                     return;
             }
         }

@@ -51,9 +51,12 @@ namespace BudgetWatcher.Forms.List
                     }
                     return;
                 case 1:
-                    currentCateogry.Delete();
-                    m_Categories.RemoveAt(e.RowIndex);
-                    CategoriesGridView.Rows.RemoveAt(e.RowIndex);
+                    if (Utils.ShowQuestionBox("Sigur doriți să ștergeți categoria?") == DialogResult.Yes)
+                    {
+                        currentCateogry.Delete();
+                        m_Categories.RemoveAt(e.RowIndex);
+                        CategoriesGridView.Rows.RemoveAt(e.RowIndex);
+                    }
                     return;
             }
         }

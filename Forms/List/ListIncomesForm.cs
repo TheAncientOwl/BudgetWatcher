@@ -53,9 +53,12 @@ namespace BudgetWatcher.Forms.List
                     }
                     return;
                 case 1:
-                    currentIncome.Delete();
-                    m_Incomes.RemoveAt(e.RowIndex);
-                    IncomesGridView.Rows.RemoveAt(e.RowIndex);
+                    if (Utils.ShowQuestionBox("Sigur doriți să ștergeți venitul?") == DialogResult.Yes)
+                    {
+                        currentIncome.Delete();
+                        m_Incomes.RemoveAt(e.RowIndex);
+                        IncomesGridView.Rows.RemoveAt(e.RowIndex);
+                    }
                     return;
             }
         }
