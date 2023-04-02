@@ -19,35 +19,44 @@ namespace BudgetWatcher.Forms.List
 
             foreach (var income in m_Incomes)
             {
-                IncomesGridView.Rows.Add("modifică", income.Id, income.Name, income.Value);
-                
+                IncomesGridView.Rows.Add("modifică", "șterge", income.Id, income.Name, income.Value);
+
             }
 
-            IncomesGridView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            IncomesGridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            IncomesGridView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            IncomesGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void IncomesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0 && e.RowIndex >= 0) // button clicked, open update form
+            if (e.RowIndex < 0) return;
+
+            Income currentIncome = m_Incomes[e.RowIndex];
+
+            switch (e.ColumnIndex)
             {
-                Income currentIncome = m_Incomes[e.RowIndex];
+                case 0:
+                    IncomeForm form = new IncomeForm();
+                    form.SetDefaultFormProperties("Modifică venitul", currentIncome);
 
-                IncomeForm form = new IncomeForm();
-                form.SetDefaultFormProperties("Modifică venitul", currentIncome);
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        form.FillInData(currentIncome);
+                        currentIncome.Update();
 
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    form.FillInData(currentIncome);
-                    currentIncome.Update();
+                        DataGridViewCellCollection cells = IncomesGridView.Rows[e.RowIndex].Cells;
+                        cells[2].Value = currentIncome.Id;
+                        cells[3].Value = currentIncome.Name;
+                        cells[4].Value = currentIncome.Value;
 
-                    DataGridViewCellCollection cells = IncomesGridView.Rows[e.RowIndex].Cells;
-                    cells[1].Value = currentIncome.Id;
-                    cells[2].Value = currentIncome.Name;
-                    cells[3].Value = currentIncome.Value;
-
-                    Utils.ShowInfoMessageBox("Venit modificat cu succes!");
-                }
+                        Utils.ShowInfoMessageBox("Venit modificat cu succes!");
+                    }
+                    return;
+                case 1:
+                    currentIncome.Delete();
+                    m_Incomes.RemoveAt(e.RowIndex);
+                    IncomesGridView.Rows.RemoveAt(e.RowIndex);
+                    return;
             }
         }
     }
