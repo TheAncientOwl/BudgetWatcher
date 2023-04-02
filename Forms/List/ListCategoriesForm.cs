@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 using BudgetWatcher.Database;
@@ -20,33 +19,42 @@ namespace BudgetWatcher.Forms.List
 
             foreach (var category in m_Categories)
             {
-                CategoriesGridView.Rows.Add("modifică", category.Id, category.Name, category.Description);
+                CategoriesGridView.Rows.Add("modifică", "șterge", category.Id, category.Name, category.Description);
             }
 
-            CategoriesGridView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            CategoriesGridView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void CategoriesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0 && e.RowIndex >= 0) // button clicked, open update form
+            if (e.RowIndex < 0) return;
+
+            ExpenseCategory currentCateogry = m_Categories[e.RowIndex];
+
+            switch (e.ColumnIndex)
             {
-                ExpenseCategory currentCateogry = m_Categories[e.RowIndex];
+                case 0:
+                    CategoryForm form = new CategoryForm();
+                    form.SetDefaultFormProperties("Modifică categoria", currentCateogry);
 
-                CategoryForm form = new CategoryForm();
-                form.SetDefaultFormProperties("Modifică categoria", currentCateogry);
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        form.FillInData(currentCateogry);
+                        currentCateogry.Update();
 
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    form.FillInData(currentCateogry);
-                    currentCateogry.Update();
+                        DataGridViewCellCollection cells = CategoriesGridView.Rows[e.RowIndex].Cells;
+                        cells[2].Value = currentCateogry.Id;
+                        cells[3].Value = currentCateogry.Name;
+                        cells[4].Value = currentCateogry.Description;
 
-                    DataGridViewCellCollection cells = CategoriesGridView.Rows[e.RowIndex].Cells;
-                    cells[1].Value = currentCateogry.Id;
-                    cells[2].Value = currentCateogry.Name;
-                    cells[3].Value = currentCateogry.Description;
-
-                    Utils.ShowInfoMessageBox("Categorie modificată cu succes!");
-                }
+                        Utils.ShowInfoMessageBox("Categorie modificată cu succes!");
+                    }
+                    return;
+                case 1:
+                    currentCateogry.Delete();
+                    m_Categories.RemoveAt(e.RowIndex);
+                    CategoriesGridView.Rows.RemoveAt(e.RowIndex);
+                    return;
             }
         }
     }
