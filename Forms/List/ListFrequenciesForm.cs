@@ -23,7 +23,7 @@ namespace BudgetWatcher.Forms.List
             }
 
             FrequenciesGridView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            FrequenciesGridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            FrequenciesGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void FrequenciesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
