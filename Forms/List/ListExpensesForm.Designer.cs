@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ExpensesGridView = new System.Windows.Forms.DataGridView();
             this.EditButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +59,7 @@
             this.ExpensesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ExpensesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EditButton,
+            this.Delete,
             this.ID,
             this.Name_,
             this.Value,
@@ -82,7 +84,16 @@
             this.EditButton.MinimumWidth = 6;
             this.EditButton.Name = "EditButton";
             this.EditButton.ReadOnly = true;
-            this.EditButton.Width = 75;
+            this.EditButton.Width = 70;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Delete.HeaderText = "Șterge";
+            this.Delete.MinimumWidth = 6;
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Width = 70;
             // 
             // ID
             // 
@@ -164,6 +175,7 @@
 
         private System.Windows.Forms.DataGridView ExpensesGridView;
         private System.Windows.Forms.DataGridViewButtonColumn EditButton;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
