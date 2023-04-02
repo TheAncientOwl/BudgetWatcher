@@ -38,7 +38,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.loadingLabel.AutoSize = true;
             this.loadingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadingLabel.Location = new System.Drawing.Point(137, 134);
+            this.loadingLabel.Location = new System.Drawing.Point(139, 118);
             this.loadingLabel.Name = "loadingLabel";
             this.loadingLabel.Size = new System.Drawing.Size(227, 24);
             this.loadingLabel.TabIndex = 0;
