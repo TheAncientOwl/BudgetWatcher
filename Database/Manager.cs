@@ -6,6 +6,7 @@ using BudgetWatcher.Database.Schemas;
 
 using Microsoft.Office.Interop.Access.Dao;
 using Access = Microsoft.Office.Interop.Access;
+using System.Runtime.InteropServices;
 
 namespace BudgetWatcher.Database
 {
@@ -20,7 +21,21 @@ namespace BudgetWatcher.Database
 
         #region Properties
         public static Manager Instance { get => s_Instance; }
-        public static Access.Dao.Database DbInstance { get => Instance.m_AccessApp.CurrentDb(); }
+        public static Access.Dao.Database DbInstance
+        {
+            get
+            {
+                try
+                {
+                    return Instance.m_AccessApp.CurrentDb();
+                }
+                catch (COMException e)
+                {
+                    Instance.HandleAccesProcessStopped();
+                }
+                return Instance.m_AccessApp.CurrentDb(); ;
+            }
+        }
         #endregion Properties
 
         #region Events
@@ -43,7 +58,7 @@ namespace BudgetWatcher.Database
             List<DbObject> dbObjects = new List<DbObject>();
 
             Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
-            
+
             while (!rs.EOF)
             {
                 DbObject dbObject = new DbObject();
@@ -107,7 +122,7 @@ namespace BudgetWatcher.Database
 
             Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
 
-            while(!rs.EOF)
+            while (!rs.EOF)
             {
                 objects.Add(new Tuple<int, string>(rs.Fields[intField].Value, rs.Fields[stringField].Value));
 
@@ -117,6 +132,13 @@ namespace BudgetWatcher.Database
             rs.Close();
 
             return objects;
+        }
+
+        public void HandleAccesProcessStopped()
+        {
+            m_AccessApp = null;
+
+            OpenOrCreateDatabase();
         }
 
         public void OpenOrCreateDatabase()

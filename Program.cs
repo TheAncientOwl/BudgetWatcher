@@ -42,7 +42,25 @@ namespace BudgetWatcher
             }
         }
 
-        public static void OpenMainForm() => mainForm.ShowDialog();
+        public static void OpenMainForm()
+        {
+            if (!IsFormOpen(mainForm.Name))
+            {
+                mainForm.ShowDialog();
+            }
+        }
+
+        private static bool IsFormOpen(string formName)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == formName || form.Text == formName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public static void OpenLoadingScreen()
         {
