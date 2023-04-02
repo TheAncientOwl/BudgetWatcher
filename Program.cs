@@ -57,7 +57,10 @@ namespace BudgetWatcher
 
         public static void CloseLoadingScreen()
         {
-            loadingScreenForm.Invoke(new Action(loadingScreenForm.Close));
+            if (loadingScreenForm.IsHandleCreated)
+            {
+                loadingScreenForm.Invoke(new Action(loadingScreenForm.Close));
+            }
         }
     }
 }

@@ -28,24 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.loadingLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // loadingLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(168, 89);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Loading...";
+            this.loadingLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadingLabel.AutoSize = true;
+            this.loadingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadingLabel.Location = new System.Drawing.Point(137, 134);
+            this.loadingLabel.Name = "loadingLabel";
+            this.loadingLabel.Size = new System.Drawing.Size(227, 24);
+            this.loadingLabel.TabIndex = 0;
+            this.loadingLabel.Text = "Se încarcă baza de date...";
+            this.loadingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LoadingScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 255);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(524, 307);
+            this.ControlBox = false;
+            this.Controls.Add(this.loadingLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -58,6 +64,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label loadingLabel;
     }
 }
