@@ -208,7 +208,7 @@
             this.Name = "ExpenseForm";
             this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Adaugă o cheltuială nouă";
+            this.Text = "cheltuială";
             ((System.ComponentModel.ISupportInitialize)(this.ValueUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -107,7 +107,7 @@
             this.MaximizeBox = false;
             this.Name = "CategoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Adaugă o categorie nouă";
+            this.Text = "categorie";
             this.ResumeLayout(false);
             this.PerformLayout();
 

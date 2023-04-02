@@ -36,13 +36,13 @@ namespace BudgetWatcher.Forms
             => Button_OpenAddForm_Click<Income, IncomeForm>("Adaugă un venit nou", "Venit adăugat cu succes!");
 
         private void Button_OpenAddNewCategoryForm_Click(object sender, EventArgs e)
-            => Button_OpenAddForm_Click<ExpenseCategory, CategoryForm>("Adăugați o categorie nouă", "Categorie adăugată cu succes!");
+            => Button_OpenAddForm_Click<ExpenseCategory, CategoryForm>("Adaugă o categorie nouă", "Categorie adăugată cu succes!");
 
         private void Button_OpenAddNewFrequencyForm_Click(object sender, EventArgs e)
-            => Button_OpenAddForm_Click<ExpenseFrequency, FrequencyForm>("Adăugați o frecvență nouă", "Frecvență adăugată cu succes!");
+            => Button_OpenAddForm_Click<ExpenseFrequency, FrequencyForm>("Adăugă o frecvență nouă", "Frecvență adăugată cu succes!");
 
         private void Button_OpenAddNewExpenseForm_Click(object sender, EventArgs e)
-            => Button_OpenAddForm_Click<Expense, ExpenseForm>("Adăugați o cheltuială nouă", "Cheltuială adăugată cu succes!");
+            => Button_OpenAddForm_Click<Expense, ExpenseForm>("Adaugă cheltuială nouă", "Cheltuială adăugată cu succes!");
         #endregion Open Add Forms Button Click
 
         #region List Button Click
