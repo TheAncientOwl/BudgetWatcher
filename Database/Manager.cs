@@ -50,6 +50,9 @@ namespace BudgetWatcher.Database
 
         public Action OnDatabaseClose;
         public Action OnDatabaseClosed;
+
+        public Action OnDatabaseProcessRestart;
+        public Action OnDatabaseProcessRestarted;
         #endregion
 
         #region Public API
@@ -136,9 +139,13 @@ namespace BudgetWatcher.Database
 
         public void HandleAccesProcessStopped()
         {
+            OnDatabaseProcessRestart?.Invoke();
+
             m_AccessApp = null;
 
             OpenOrCreateDatabase();
+
+            OnDatabaseProcessRestarted?.Invoke();
         }
 
         public void OpenOrCreateDatabase()
