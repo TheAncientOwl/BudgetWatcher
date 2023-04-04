@@ -65,7 +65,7 @@
             this.CategoriesGridView.ReadOnly = true;
             this.CategoriesGridView.RowHeadersWidth = 51;
             this.CategoriesGridView.RowTemplate.Height = 24;
-            this.CategoriesGridView.Size = new System.Drawing.Size(658, 411);
+            this.CategoriesGridView.Size = new System.Drawing.Size(1181, 563);
             this.CategoriesGridView.TabIndex = 1;
             this.CategoriesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoriesGridView_CellContentClick);
             // 
@@ -100,7 +100,7 @@
             // Name_
             // 
             this.Name_.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Name_.FillWeight = 53.39286F;
+            this.Name_.FillWeight = 30F;
             this.Name_.HeaderText = "Denumire";
             this.Name_.MinimumWidth = 6;
             this.Name_.Name = "Name_";
@@ -109,7 +109,7 @@
             // Description
             // 
             this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Description.FillWeight = 53.39286F;
+            this.Description.FillWeight = 70F;
             this.Description.HeaderText = "Descriere";
             this.Description.MinimumWidth = 6;
             this.Description.Name = "Description";
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 411);
+            this.ClientSize = new System.Drawing.Size(1181, 563);
             this.Controls.Add(this.CategoriesGridView);
             this.Name = "ListCategoriesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
