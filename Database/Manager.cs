@@ -409,9 +409,13 @@ namespace BudgetWatcher.Database
 
             ExpenseFrequency frequency = new ExpenseFrequency();
             foreach (var value in new Tuple<string, int>[] {
-                new Tuple<string, int>("Anual", 365),
+                new Tuple<string, int>("Fără frecvență", 0),
+                new Tuple<string, int>("Zilnic", 1),
+                new Tuple<string, int>("Săptămânal", 7),
                 new Tuple<string, int>("Lunar", 30),
-                new Tuple<string, int>("Zilnic", 1)
+                new Tuple<string, int>("Trimestrial", 90),
+                new Tuple<string, int>("Semestrial", 182),
+                new Tuple<string, int>("Anual", 365),
             })
             {
                 frequency.Name = value.Item1;
