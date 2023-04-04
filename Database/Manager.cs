@@ -29,7 +29,7 @@ namespace BudgetWatcher.Database
                 {
                     return Instance.m_AccessApp.CurrentDb();
                 }
-                catch (COMException e)
+                catch (COMException)
                 {
                     Instance.HandleAccesProcessStopped();
                 }
@@ -173,20 +173,6 @@ namespace BudgetWatcher.Database
 
             OnDatabaseClosed?.Invoke();
         }
-
-        private Recordset FindFirst(string tableName, string idField, int id)
-        {
-            Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
-            rs.FindFirst(idField + " = " + id);
-
-            if (rs.NoMatch)
-            {
-                rs.Close();
-                throw new Exception("No record with ID " + id + " matched on table " + tableName);
-            }
-
-            return rs;
-        }
         #endregion Public API
 
         #region Private API
@@ -213,6 +199,20 @@ namespace BudgetWatcher.Database
             InsertDefaultData();
 
             OnDatabaseCreated?.Invoke();
+        }
+
+        Recordset FindFirst(string tableName, string idField, int id)
+        {
+            Recordset rs = DbInstance.OpenRecordset(tableName, RecordsetTypeEnum.dbOpenDynaset);
+            rs.FindFirst(idField + " = " + id);
+
+            if (rs.NoMatch)
+            {
+                rs.Close();
+                throw new Exception("No record with ID " + id + " matched on table " + tableName);
+            }
+
+            return rs;
         }
         #endregion Private API
 
