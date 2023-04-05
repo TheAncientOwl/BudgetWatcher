@@ -56,6 +56,32 @@ namespace BudgetWatcher.Database
         #endregion
 
         #region Public API
+        public List<Expense> SelectAllExpenses(DateTime startDate, DateTime endDate)
+        {
+            List<Expense> expenses = new List<Expense>();
+
+            Recordset rs = DbInstance.OpenRecordset(Expense.TableName, RecordsetTypeEnum.dbOpenDynaset);
+
+            while (!rs.EOF)
+            {
+                DateTime expenseDate = rs.Fields[Expense.Fields.Date].Value;
+
+                if (startDate <= expenseDate && expenseDate <= endDate)
+                {
+                    Expense expense = new Expense();
+                    expense.LoadFromRecordset(rs);
+
+                    expenses.Add(expense);
+                }
+
+                rs.MoveNext();
+            }
+
+            rs.Close();
+
+            return expenses;
+        }
+
         public List<DbObject> SelectAll<DbObject>(string tableName) where DbObject : IDatabaseObject, new()
         {
             List<DbObject> dbObjects = new List<DbObject>();

@@ -33,16 +33,13 @@
             // 
             // loadingLabel
             // 
-            this.loadingLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadingLabel.AutoSize = true;
+            this.loadingLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loadingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadingLabel.Location = new System.Drawing.Point(139, 118);
+            this.loadingLabel.Location = new System.Drawing.Point(0, 0);
             this.loadingLabel.Name = "loadingLabel";
-            this.loadingLabel.Size = new System.Drawing.Size(227, 24);
+            this.loadingLabel.Size = new System.Drawing.Size(524, 307);
             this.loadingLabel.TabIndex = 0;
-            this.loadingLabel.Text = "Se încarcă baza de date...";
+            this.loadingLabel.Text = "Se încarcă...";
             this.loadingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LoadingScreenForm
@@ -58,8 +55,8 @@
             this.Name = "LoadingScreenForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BudgetWatcher";
+            this.TopMost = true;
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

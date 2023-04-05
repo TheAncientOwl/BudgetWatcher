@@ -11,9 +11,10 @@ namespace BudgetWatcher
     {
         static readonly MainForm mainForm = new MainForm();
 
-        static readonly LoadingScreenForm loadingScreenForm = new LoadingScreenForm();
+        static readonly LoadingScreenForm loadingScreenForm = new LoadingScreenForm("Se încarcă baza de date...");
         static Thread loadingScreenThread = null;
 
+        [STAThread]
         static void Main(string[] args)
         {
             Database.Manager.Instance.OnDatabaseLoad += OpenLoadingScreen;

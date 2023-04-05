@@ -140,6 +140,7 @@
             this.Button_GenerateHistory.TabIndex = 9;
             this.Button_GenerateHistory.Text = "istoric";
             this.Button_GenerateHistory.UseVisualStyleBackColor = true;
+            this.Button_GenerateHistory.Click += new System.EventHandler(this.Button_GenerateHistory_Click);
             // 
             // AddLabel
             // 

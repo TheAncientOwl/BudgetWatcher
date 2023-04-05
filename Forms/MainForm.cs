@@ -1,5 +1,6 @@
 ﻿using BudgetWatcher.Database.Schemas;
 using BudgetWatcher.Forms.Data;
+using BudgetWatcher.Forms.Generate;
 using BudgetWatcher.Forms.List;
 using System;
 using System.Windows.Forms;
@@ -58,5 +59,15 @@ namespace BudgetWatcher.Forms
         private void Button_ListFrequencies_Click(object sender, EventArgs e) => Button_List_Click<ListFrequenciesForm>();
         private void Button_ListExpenses_Click(object sender, EventArgs e) => Button_List_Click<ListExpensesForm>();
         #endregion List Button Click
+
+        private void Button_GenerateHistory_Click(object sender, EventArgs e)
+        {
+            HistoryForm form = new HistoryForm();
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                Utils.ShowInfoMessageBox("Documentul cu istoricul a fost generat cu succes!");
+            }
+        }
     }
 }
