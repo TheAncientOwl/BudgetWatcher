@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.FrequenciesGridView = new System.Windows.Forms.DataGridView();
             this.EditButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -90,6 +92,8 @@
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ID.DefaultCellStyle = dataGridViewCellStyle2;
             this.ID.HeaderText = "ID";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
@@ -108,6 +112,8 @@
             // Days
             // 
             this.Days.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Days.DefaultCellStyle = dataGridViewCellStyle3;
             this.Days.FillWeight = 40F;
             this.Days.HeaderText = "Perioada (zile)";
             this.Days.MinimumWidth = 6;
@@ -123,6 +129,7 @@
             this.Name = "ListFrequenciesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frecvențe de cheltuieli";
+            this.Load += new System.EventHandler(this.ListFrequenciesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FrequenciesGridView)).EndInit();
             this.ResumeLayout(false);
 

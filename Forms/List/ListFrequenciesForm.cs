@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using BudgetWatcher.Database;
@@ -9,21 +11,32 @@ namespace BudgetWatcher.Forms.List
 {
     public partial class ListFrequenciesForm : Form
     {
-        readonly List<ExpenseFrequency> m_Frequencies = null;
+        List<ExpenseFrequency> m_Frequencies = new List<ExpenseFrequency>();
 
         public ListFrequenciesForm()
         {
             InitializeComponent();
+        }
 
-            m_Frequencies = Manager.Instance.SelectAll<ExpenseFrequency>(ExpenseFrequency.TableName);
-
-            foreach (var category in m_Frequencies)
+        private async void ListFrequenciesForm_Load(object sender, System.EventArgs e)
+        {
+            await Task.Run(() =>
             {
-                FrequenciesGridView.Rows.Add("modifică", "șterge", category.Id, category.Name, category.Days);
-            }
+                TableIterator<ExpenseFrequency> it = new TableIterator<ExpenseFrequency>(ExpenseFrequency.TableName);
 
-            FrequenciesGridView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            FrequenciesGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                while(it.HasNext())
+                {
+                    ExpenseFrequency frequency = it.Value;
+
+                    m_Frequencies.Add(frequency);
+
+                    FrequenciesGridView.Invoke(new Action(() => FrequenciesGridView.Rows.Add("modifică", "șterge", frequency.Id, frequency.Name, frequency.Days)));
+
+                    it.MoveNext();
+                }
+
+                it.Close();
+            });
         }
 
         private void FrequenciesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

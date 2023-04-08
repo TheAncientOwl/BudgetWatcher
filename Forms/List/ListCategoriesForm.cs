@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using BudgetWatcher.Database;
@@ -9,20 +11,32 @@ namespace BudgetWatcher.Forms.List
 {
     public partial class ListCategoriesForm : Form
     {
-        readonly List<ExpenseCategory> m_Categories = null;
+        readonly List<ExpenseCategory> m_Categories = new List<ExpenseCategory>();
 
         public ListCategoriesForm()
         {
             InitializeComponent();
+        }
 
-            m_Categories = Manager.Instance.SelectAll<ExpenseCategory>(ExpenseCategory.TableName);
-
-            foreach (var category in m_Categories)
+        private async void ListCategoriesForm_Load(object sender, System.EventArgs e)
+        {
+            await Task.Run(() =>
             {
-                CategoriesGridView.Rows.Add("modifică", "șterge", category.Id, category.Name, category.Description);
-            }
+                TableIterator<ExpenseCategory> it = new TableIterator<ExpenseCategory>(ExpenseCategory.TableName);
 
-            CategoriesGridView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                while (it.HasNext())
+                {
+                    ExpenseCategory category = it.Value;
+
+                    m_Categories.Add(category);
+
+                    CategoriesGridView.Invoke(new Action(() => CategoriesGridView.Rows.Add("modifică", "șterge", category.Id, category.Name, category.Description)));
+
+                    it.MoveNext();
+                }
+
+                it.Close();
+            });
         }
 
         private void CategoriesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

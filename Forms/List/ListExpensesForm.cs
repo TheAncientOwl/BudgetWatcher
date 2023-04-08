@@ -37,10 +37,6 @@ namespace BudgetWatcher.Forms.List
 
                 it.Close();
             });
-
-            ExpensesGridView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            ExpensesGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            ExpensesGridView.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void ExpensesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

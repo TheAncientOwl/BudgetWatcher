@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using BudgetWatcher.Database;
@@ -9,22 +11,32 @@ namespace BudgetWatcher.Forms.List
 {
     public partial class ListIncomesForm : Form
     {
-        readonly List<Income> m_Incomes = null;
+        readonly List<Income> m_Incomes = new List<Income>();
 
         public ListIncomesForm()
         {
             InitializeComponent();
+        }
 
-            m_Incomes = Manager.Instance.SelectAll<Income>(Income.TableName);
-
-            foreach (var income in m_Incomes)
+        private async void ListIncomesForm_Load(object sender, System.EventArgs e)
+        {
+            await Task.Run(() =>
             {
-                IncomesGridView.Rows.Add("modifică", "șterge", income.Id, income.Name, income.Value);
+                TableIterator<Income> it = new TableIterator<Income>(Income.TableName);
 
-            }
+                while (it.HasNext())
+                {
+                    Income income = it.Value;
 
-            IncomesGridView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            IncomesGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    m_Incomes.Add(income);
+
+                    IncomesGridView.Invoke(new Action(() => IncomesGridView.Rows.Add("modifică", "șterge", income.Id, income.Name, income.Value)));
+
+                    it.MoveNext();
+                }
+
+                it.Close();
+            });
         }
 
         private void IncomesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

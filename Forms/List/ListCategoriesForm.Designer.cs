@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CategoriesGridView = new System.Windows.Forms.DataGridView();
             this.EditButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -90,6 +91,8 @@
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ID.DefaultCellStyle = dataGridViewCellStyle2;
             this.ID.FillWeight = 123.2143F;
             this.ID.HeaderText = "ID";
             this.ID.MinimumWidth = 6;
@@ -124,6 +127,7 @@
             this.Name = "ListCategoriesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Categorii de cheltuieli";
+            this.Load += new System.EventHandler(this.ListCategoriesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CategoriesGridView)).EndInit();
             this.ResumeLayout(false);
 
