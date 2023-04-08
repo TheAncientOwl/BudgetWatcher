@@ -166,6 +166,7 @@
             this.Name = "ListExpensesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cheltuieli";
+            this.Load += new System.EventHandler(this.ListExpensesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ExpensesGridView)).EndInit();
             this.ResumeLayout(false);
 

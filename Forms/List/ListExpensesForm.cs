@@ -1,26 +1,42 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using System;
 
-using BudgetWatcher.Database;
 using BudgetWatcher.Database.Schemas;
 using BudgetWatcher.Forms.Data;
+using BudgetWatcher.Database;
 
 namespace BudgetWatcher.Forms.List
 {
     public partial class ListExpensesForm : Form
     {
-        readonly List<Expense> m_Expenses = null;
+        readonly List<Expense> m_Expenses = new List<Expense>();
 
         public ListExpensesForm()
         {
             InitializeComponent();
+        }
 
-            m_Expenses = Manager.Instance.SelectAll<Expense>(Expense.TableName);
-
-            foreach (var expense in m_Expenses)
+        private async void ListExpensesForm_Load(object sender, System.EventArgs e)
+        {
+            await Task.Run(() =>
             {
-                ExpensesGridView.Rows.Add("modifică", "șterge", expense.Id, expense.Name, expense.Value, expense.Date.ToShortDateString(), expense.Category.Name, expense.Frequency.Name, expense.Details);
-            }
+                TableIterator<Expense> it = new TableIterator<Expense>(Expense.TableName);
+
+                while (it.HasNext())
+                {
+                    Expense expense = it.Value;
+
+                    m_Expenses.Add(expense);
+
+                    ExpensesGridView.Invoke(new Action(() => ExpensesGridView.Rows.Add("modifică", "șterge", expense.Id, expense.Name, expense.Value, expense.Date.ToShortDateString(), expense.Category.Name, expense.Frequency.Name, expense.Details)));
+
+                    it.MoveNext();
+                }
+
+                it.Close();
+            });
 
             ExpensesGridView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             ExpensesGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

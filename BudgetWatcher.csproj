@@ -89,6 +89,7 @@
     <Compile Include="Database\Schemas\ExpenseFrequency.cs" />
     <Compile Include="Database\Schemas\IDatabaseObjectFiller.cs" />
     <Compile Include="Database\Schemas\Income.cs" />
+    <Compile Include="Database\TableIterator.cs" />
     <Compile Include="Forms\Data\CategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
