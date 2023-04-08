@@ -76,7 +76,7 @@
             this.ExpensesGridView.ReadOnly = true;
             this.ExpensesGridView.RowHeadersWidth = 51;
             this.ExpensesGridView.RowTemplate.Height = 24;
-            this.ExpensesGridView.Size = new System.Drawing.Size(1057, 450);
+            this.ExpensesGridView.Size = new System.Drawing.Size(1243, 579);
             this.ExpensesGridView.TabIndex = 2;
             this.ExpensesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExpensesGridView_CellContentClick);
             // 
@@ -170,7 +170,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1057, 450);
+            this.ClientSize = new System.Drawing.Size(1243, 579);
             this.Controls.Add(this.ExpensesGridView);
             this.Name = "ListExpensesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
