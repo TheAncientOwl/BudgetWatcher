@@ -20,24 +20,25 @@ namespace BudgetWatcher.Forms.List
 
         private async void ListFrequenciesForm_Load(object sender, System.EventArgs e)
         {
+            ControlBox = false;
             await Task.Run(() =>
             {
-                TableIterator<ExpenseFrequency> it = new TableIterator<ExpenseFrequency>(ExpenseFrequency.TableName);
-
-                while (it.HasNext())
+                using (TableIterator<ExpenseFrequency> it = new TableIterator<ExpenseFrequency>(ExpenseFrequency.TableName))
                 {
-                    ExpenseFrequency frequency = it.Value;
+                    while (it.HasNext())
+                    {
+                        ExpenseFrequency frequency = it.Value;
 
-                    m_Frequencies.Add(frequency);
+                        m_Frequencies.Add(frequency);
 
-                    if (FrequenciesGridView.IsHandleCreated)
-                        FrequenciesGridView.Invoke(new Action(() => FrequenciesGridView.Rows.Add("modifică", "șterge", frequency.Id, frequency.Name, frequency.Days)));
+                        if (FrequenciesGridView.IsHandleCreated)
+                            FrequenciesGridView.Invoke(new Action(() => FrequenciesGridView.Rows.Add("modifică", "șterge", frequency.Id, frequency.Name, frequency.Days)));
 
-                    it.MoveNext();
+                        it.MoveNext();
+                    }
                 }
-
-                it.Close();
             });
+            ControlBox = true;
         }
 
         private void FrequenciesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

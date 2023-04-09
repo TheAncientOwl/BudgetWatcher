@@ -20,24 +20,25 @@ namespace BudgetWatcher.Forms.List
 
         private async void ListIncomesForm_Load(object sender, System.EventArgs e)
         {
+            ControlBox = false;
             await Task.Run(() =>
             {
-                TableIterator<Income> it = new TableIterator<Income>(Income.TableName);
-
-                while (it.HasNext())
+                using (TableIterator<Income> it = new TableIterator<Income>(Income.TableName))
                 {
-                    Income income = it.Value;
+                    while (it.HasNext())
+                    {
+                        Income income = it.Value;
 
-                    m_Incomes.Add(income);
+                        m_Incomes.Add(income);
 
-                    if (IncomesGridView.IsHandleCreated)
-                        IncomesGridView.Invoke(new Action(() => IncomesGridView.Rows.Add("modifică", "șterge", income.Id, income.Name, income.Value)));
+                        if (IncomesGridView.IsHandleCreated)
+                            IncomesGridView.Invoke(new Action(() => IncomesGridView.Rows.Add("modifică", "șterge", income.Id, income.Name, income.Value)));
 
-                    it.MoveNext();
+                        it.MoveNext();
+                    }
                 }
-
-                it.Close();
             });
+            ControlBox = true;
         }
 
         private void IncomesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

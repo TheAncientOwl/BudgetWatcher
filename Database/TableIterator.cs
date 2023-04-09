@@ -1,10 +1,14 @@
 ﻿using Microsoft.Office.Interop.Access.Dao;
 
 using BudgetWatcher.Database.Schemas;
+using System;
+using BudgetWatcher.Forms;
 
 namespace BudgetWatcher.Database
 {
-    public class TableIterator<DbObject> where DbObject : IDatabaseObject, new()
+    public class TableIterator<DbObject> 
+        : IDisposable
+        where DbObject : IDatabaseObject, new()
     {
         #region Fields
         readonly Recordset m_Recordset = null;
@@ -33,13 +37,14 @@ namespace BudgetWatcher.Database
         #region Public API
         public dynamic GetField(string field) => m_Recordset.Fields[field].Value;
 
-        public void Close() => m_Recordset.Close();
-
         public bool HasNext() => !m_Recordset.EOF;
 
         public void MoveNext() => m_Recordset.MoveNext();
 
         public void Reset() => m_Recordset.Requery();
+
+        public void Dispose() => m_Recordset.Close();
+
         #endregion Public API
     }
 }

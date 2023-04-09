@@ -20,24 +20,25 @@ namespace BudgetWatcher.Forms.List
 
         private async void ListCategoriesForm_Load(object sender, System.EventArgs e)
         {
+            ControlBox = false;
             await Task.Run(() =>
             {
-                TableIterator<ExpenseCategory> it = new TableIterator<ExpenseCategory>(ExpenseCategory.TableName);
-
-                while (it.HasNext())
+                using (TableIterator<ExpenseCategory> it = new TableIterator<ExpenseCategory>(ExpenseCategory.TableName))
                 {
-                    ExpenseCategory category = it.Value;
+                    while (it.HasNext())
+                    {
+                        ExpenseCategory category = it.Value;
 
-                    m_Categories.Add(category);
+                        m_Categories.Add(category);
 
-                    if (CategoriesGridView.IsHandleCreated)
-                        CategoriesGridView.Invoke(new Action(() => CategoriesGridView.Rows.Add("modifică", "șterge", category.Id, category.Name, category.Description)));
+                        if (CategoriesGridView.IsHandleCreated)
+                            CategoriesGridView.Invoke(new Action(() => CategoriesGridView.Rows.Add("modifică", "șterge", category.Id, category.Name, category.Description)));
 
-                    it.MoveNext();
+                        it.MoveNext();
+                    }
                 }
-
-                it.Close();
             });
+            ControlBox = true;
         }
 
         private void CategoriesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

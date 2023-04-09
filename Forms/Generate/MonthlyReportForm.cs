@@ -26,51 +26,51 @@ namespace BudgetWatcher.Forms.Generate
             Excel.Worksheet incomesSheet = workbook.Sheets[1];
             Excel.Worksheet expensesSheet = workbook.Sheets[2];
 
-            TableIterator<Expense> expenseIt = new TableIterator<Expense>(Expense.TableName);
-            DateTime pickedTime = DateTimePicker.Value;
-            int expenseLine = 2;
-
-            while (expenseIt.HasNext())
+            using (TableIterator<Expense> it = new TableIterator<Expense>(Expense.TableName))
             {
-                DateTime date = (DateTime)expenseIt.GetField(Expense.Fields.Date);
+                DateTime pickedTime = DateTimePicker.Value;
+                int line = 2;
 
-                if (date.Month == pickedTime.Month && date.Year == pickedTime.Year)
+                while (it.HasNext())
                 {
-                    Expense expense = expenseIt.Value;
+                    DateTime date = (DateTime)it.GetField(Expense.Fields.Date);
 
-                    expensesSheet.Cells[expenseLine, 1].Value = expense.ID;
-                    expensesSheet.Cells[expenseLine, 2].Value = expense.Name;
-                    expensesSheet.Cells[expenseLine, 3].Value = expense.Value;
-                    expensesSheet.Cells[expenseLine, 4].Value = expense.Date.ToShortDateString();
-                    expensesSheet.Cells[expenseLine, 5].Value = expense.Category.Name;
-                    expensesSheet.Cells[expenseLine, 6].Value = expense.Frequency.Name;
-                    expensesSheet.Cells[expenseLine, 7].Value = expense.Details;
+                    if (date.Month == pickedTime.Month && date.Year == pickedTime.Year)
+                    {
+                        Expense expense = it.Value;
 
-                    expenseLine++;
+                        expensesSheet.Cells[line, 1].Value = expense.ID;
+                        expensesSheet.Cells[line, 2].Value = expense.Name;
+                        expensesSheet.Cells[line, 3].Value = expense.Value;
+                        expensesSheet.Cells[line, 4].Value = expense.Date.ToShortDateString();
+                        expensesSheet.Cells[line, 5].Value = expense.Category.Name;
+                        expensesSheet.Cells[line, 6].Value = expense.Frequency.Name;
+                        expensesSheet.Cells[line, 7].Value = expense.Details;
+
+                        line++;
+                    }
+
+                    it.MoveNext();
                 }
-
-                expenseIt.MoveNext();
             }
 
-            expenseIt.Close();
-
-            TableIterator<Income> incomeIt = new TableIterator<Income>(Income.TableName);
-            int incomeLine = 2;
-
-            while (incomeIt.HasNext())
+            using (TableIterator<Income> it = new TableIterator<Income>(Income.TableName))
             {
-                Income income = incomeIt.Value;
+                int line = 2;
 
-                incomesSheet.Cells[incomeLine, 1].Value = income.ID;
-                incomesSheet.Cells[incomeLine, 2].Value = income.Name;
-                incomesSheet.Cells[incomeLine, 3].Value = income.Value;
+                while (it.HasNext())
+                {
+                    Income income = it.Value;
 
-                incomeLine++;
+                    incomesSheet.Cells[line, 1].Value = income.ID;
+                    incomesSheet.Cells[line, 2].Value = income.Name;
+                    incomesSheet.Cells[line, 3].Value = income.Value;
 
-                incomeIt.MoveNext();
+                    line++;
+
+                    it.MoveNext();
+                }
             }
-
-            incomeIt.Close();
 
             excelApp.DisplayAlerts = false;
 

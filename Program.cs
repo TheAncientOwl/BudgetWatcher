@@ -38,6 +38,7 @@ namespace BudgetWatcher
                 else
                 {
                     Database.Manager.Instance.CloseDatabase();
+
                     Environment.Exit(0);
                 }
             }
