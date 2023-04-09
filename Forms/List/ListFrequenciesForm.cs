@@ -24,13 +24,14 @@ namespace BudgetWatcher.Forms.List
             {
                 TableIterator<ExpenseFrequency> it = new TableIterator<ExpenseFrequency>(ExpenseFrequency.TableName);
 
-                while(it.HasNext())
+                while (it.HasNext())
                 {
                     ExpenseFrequency frequency = it.Value;
 
                     m_Frequencies.Add(frequency);
 
-                    FrequenciesGridView.Invoke(new Action(() => FrequenciesGridView.Rows.Add("modifică", "șterge", frequency.Id, frequency.Name, frequency.Days)));
+                    if (FrequenciesGridView.IsHandleCreated)
+                        FrequenciesGridView.Invoke(new Action(() => FrequenciesGridView.Rows.Add("modifică", "șterge", frequency.Id, frequency.Name, frequency.Days)));
 
                     it.MoveNext();
                 }

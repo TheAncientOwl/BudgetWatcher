@@ -30,7 +30,8 @@ namespace BudgetWatcher.Forms.List
 
                     m_Incomes.Add(income);
 
-                    IncomesGridView.Invoke(new Action(() => IncomesGridView.Rows.Add("modifică", "șterge", income.Id, income.Name, income.Value)));
+                    if (IncomesGridView.IsHandleCreated)
+                        IncomesGridView.Invoke(new Action(() => IncomesGridView.Rows.Add("modifică", "șterge", income.Id, income.Name, income.Value)));
 
                     it.MoveNext();
                 }

@@ -30,7 +30,8 @@ namespace BudgetWatcher.Forms.List
 
                     m_Categories.Add(category);
 
-                    CategoriesGridView.Invoke(new Action(() => CategoriesGridView.Rows.Add("modifică", "șterge", category.Id, category.Name, category.Description)));
+                    if (CategoriesGridView.IsHandleCreated)
+                        CategoriesGridView.Invoke(new Action(() => CategoriesGridView.Rows.Add("modifică", "șterge", category.Id, category.Name, category.Description)));
 
                     it.MoveNext();
                 }

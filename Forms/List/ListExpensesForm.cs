@@ -30,7 +30,8 @@ namespace BudgetWatcher.Forms.List
 
                     m_Expenses.Add(expense);
 
-                    ExpensesGridView.Invoke(new Action(() => ExpensesGridView.Rows.Add("modifică", "șterge", expense.Id, expense.Name, expense.Value, expense.Date.ToShortDateString(), expense.Category.Name, expense.Frequency.Name, expense.Details)));
+                    if (ExpensesGridView.IsHandleCreated)
+                        ExpensesGridView.Invoke(new Action(() => ExpensesGridView.Rows.Add("modifică", "șterge", expense.Id, expense.Name, expense.Value, expense.Date.ToShortDateString(), expense.Category.Name, expense.Frequency.Name, expense.Details)));
 
                     it.MoveNext();
                 }
