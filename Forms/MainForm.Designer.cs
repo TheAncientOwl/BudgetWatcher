@@ -131,6 +131,7 @@
             this.Button_GenerateReport.TabIndex = 8;
             this.Button_GenerateReport.Text = "raport";
             this.Button_GenerateReport.UseVisualStyleBackColor = true;
+            this.Button_GenerateReport.Click += new System.EventHandler(this.Button_GenerateReport_Click);
             // 
             // Button_GenerateHistory
             // 

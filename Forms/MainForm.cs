@@ -69,5 +69,15 @@ namespace BudgetWatcher.Forms
                 Utils.ShowInfoMessageBox("Documentul cu istoricul a fost generat cu succes!");
             }
         }
+
+        private void Button_GenerateReport_Click(object sender, EventArgs e)
+        {
+            MonthlyReportForm form = new MonthlyReportForm();
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                Utils.ShowInfoMessageBox("Raportul a fost generat!");
+            }
+        }
     }
 }
