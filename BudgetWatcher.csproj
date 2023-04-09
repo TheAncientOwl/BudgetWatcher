@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="MontlhyReportTemplate.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\Data\CategoryForm.resx">
